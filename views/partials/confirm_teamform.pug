@@ -1,0 +1,108 @@
+-var formClass = cssClass || ""
+if ajax == true
+    - formClass = cssClass + " ajax"
+.register
+    form(action="/confirming_team", method="post", class="validate "+formClass)
+        input(type="hidden", name="__nexturl", value=nextUrl)
+        h2 Confirm your team
+        .demographics
+            h3 Your Information
+            .row
+                +textbox("First Name", "firstname", "firstname req",values.firstname, "Head Cook First Name - ex: John")
+                +textbox("Last Name", "lastname", "lastname req",values.lastname, "Head Cook Last Name - ex: Smith")
+            .row
+                +textbox("Street Address", "street", "street req",values.address1, "Street Address - ex: 12 Cloverfield  Dr")
+                +textbox("City", "city", "city req",values.city, "City - ex: Cincinatti")
+            .row
+                +stateSelect("State", "state", "state req", values.state)
+                +textbox("Zip", "zip", "zip req",values.zip, "Zip - ex: 00000-0000")
+            .row
+                +textbox("Phone", "phone", "phone req",values.phone, "Head Cook Phone - ex: (xxx) xxx-xxxx)")
+                
+        .dashborder                
+        .user
+            h3 Your Sign-in Information
+            .row
+                h4 !{values.email}
+                +hidden("Email Address", "email", values.email)
+                +hidden("Confirm Code", "confirm_code", values.confirm_code)
+            .row
+                +password("Password", "password", "password  req","", "Password")
+                +password("Confirm Password", "password2", "password2 req","", "Confirm Password")
+        .e2.ee
+        .dashborder
+        .team
+            h3 Your Team Information
+            +textbox("Team Name", "team_name", "teamname fullwidth req", values.team_name, "* Team Name")
+            .row.radios
+                h4 Number of Team Members
+                -var checked = ''
+                if values.numberOfMembers==1
+                  -var checked = 'checked'
+                +radiobutton("1", "numberOfMembers", "team_radios", "1",checked)
+                    .dot 
+                    span 1
+                -var checked = ''
+                if values.numberOfMembers==2
+                  -var checked = 'checked'
+                +radiobutton("2", "numberOfMembers", "team_radios", "2",checked)
+                    .dot
+                    span 2
+                -var checked = ''
+                if values.numberOfMembers==3
+                  -var checked = 'checked'
+                +radiobutton("3", "numberOfMembers", "team_radios", "3",checked)
+                    .dot 
+                    span 3
+                -var checked = ''
+                if values.numberOfMembers==4
+                  -var checked = 'checked'
+                +radiobutton("4", "numberOfMembers", "team_radios", "4",checked)
+                    .dot 
+                    span 4
+                -var checked = ''
+                if values.numberOfMembers==5
+                  -var checked = 'checked'
+                +radiobutton("5", "numberOfMembers", "team_radios", "5",checked)
+                    .dot 
+                    span 5
+                -var checked = ''
+                if values.numberOfMembers=="6+"
+                  -var checked = 'checked'
+                +radiobutton("6+", "numberOfMembers", "team_radios", "6+",checked)
+                    .dot 
+                    span 6+
+                .e3.ee
+            h4 Please add at least one ID from an official sanctioning body:
+            -   //this is slightly stupid.
+            -   //for some reason, the interpreter will gladly ignore an undefined property, but not a subproperty.
+                
+            //- if values.cooknumber == undefined 
+            +textbox("KCBS Head Cook Number", "cooknumber[kcbs]", "kcbs fullwidth cooknumber_val", "","Ex: 123456")
+            +textbox("IBCA Head Cook Number", "cooknumber[ibca]", "ibca fullwidth cooknumber_val", "","Ex: 123456")
+            +textbox("FBA Head Cook Number", "cooknumber[fba]", "fba fullwidth cooknumber_val", "","Ex: 123456")
+            +textbox("BCA Head Cook Number", "cooknumber[bca]", "bca fullwidth cooknumber_val", "","Ex: 123456")
+            +textbox("PNWBA Head Cook Number", "cooknumber[pnwba]", "pnwba fullwidth cooknumber_val", "","Ex: 123456")
+            +textbox("SLBS Head Cook Number", "cooknumber[slbs]", "slbs fullwidth cooknumber_val", "","Ex: 123456")
+
+            //- else 
+            //-     +textbox("KCBS Head Cook Number", "cooknumber[kcbs]", "kcbs fullwidth cooknumber_val", JSON.stringify(values.cooknumber['kcbs']).replace(/\"/g, ''),"Ex: 123456")
+            //-     +textbox("IBCA Head Cook Number", "cooknumber[ibca]", "ibca fullwidth cooknumber_val", JSON.stringify(values.cooknumber['ibca']).replace(/\"/g, ''),"Ex: 123456")
+            //-     +textbox("FBA Head Cook Number", "cooknumber[fba]", "fba fullwidth cooknumber_val", JSON.stringify(values.cooknumber['fba']).replace(/\"/g, ''),"Ex: 123456")
+            //-     +textbox("BCA Head Cook Number", "cooknumber[bca]", "bca fullwidth cooknumber_val", JSON.stringify(values.cooknumber['bca']).replace(/\"/g, ''),"Ex: 123456")
+            //-     +textbox("PNWBA Head Cook Number", "cooknumber[pnwba]", "pnwba fullwidth cooknumber_val",JSON.stringify(values.cooknumber['pnwba']).replace(/\"/g, ''),"Ex: 123456")
+            //-     +textbox("SLBS Head Cook Number", "cooknumber[slbs]", "slbs fullwidth cooknumber_val", JSON.stringify(values.cooknumber['slbs']).replace(/\"/g, ''),"Ex: 123456")
+            .e.ee
+            +textbox("Social Media Page, Website, Etc: (optional)","social", "social fullwidth", values.social,"Ex: instagram.com/myname")
+        .dashborder
+        .optin
+            +checkbox("Would you like to be contacted to hear more about Smithfield products and promotions?", "optin", "fullwidth", "true", "checked")
+        .confirm
+            +checkbox("Certify", "certify", "certify", "true", "checked")
+                span By registering, I certify that I am at least 18 years of age or older and have read and agree to the <a href="#tandc" class="modaltrigger">Registration Terms and Conditions</a>. As the Head Cook, I confirm that I have obtained consent from my team members to register my team for the Smokin’ With Smithfield National Barbecue Championship. I further acknowledge that if I qualify for the Playoffs, I will be required to agree to additional terms and conditions.
+        .recaptcha
+            .g-recaptcha(data-sitekey= captcha)
+        .remember
+            +checkbox("Remember Me", "remember_me", "fullwidth", "true", "checked")
+        .controls
+            input.button.primary(type="submit", value="Confirm my info")

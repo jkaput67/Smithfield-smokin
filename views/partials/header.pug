@@ -1,0 +1,71 @@
+header
+    #top
+
+    nav
+        ul.sociallinks#social
+            li.facebook
+                a.fb(href="http://facebook.com") Share on facebook
+            li.twitter
+                a.tw(href="https://twitter.com/intent/tweet?text=We%E2%80%99re%20proud%20to%20be%20Smokin%E2%80%99%20With%20Smithfield!%20%F0%9F%94%A5%F0%9F%90%B7%20Check%20out%20www.smokinwithsmithfield.com%20to%20learn%20how%20you%20can%20too!%20%23SmokinWithSmithfield%20%0A") Follow and Tweet
+                
+
+
+            li.email
+                a.em(href="mailto:?subject=It's%20a%20win%20when%20you%20Get%20Smokin'%20With%20Smithfield%C2%AE&amp;body=Fire%20up%20your%20barbecue%20competition%20season%20with%20an%20assist%20from%20Smithfield.%20Sign%20up%20for%20the%20Smokin'%20With%20Smithfield%C2%AE%20Grant%20Program%20to%20deepen%20your%20prize%20pool%2C%20or%20become%20a%20Committed%20Cook%20and%20receive%20great%20swag%20just%20for%20cooking%20with%20Smithfield%C2%AE.%20Learn%20more%20how%20Champion%20Pitmasters%20are%20winning%20with%20Smithfield. http%3A%2F%2Fwww.smokinwithsmithfield.com") Send a message
+        if hideBbqChampLogo
+            a.header_logo.noBbqChampLogo(href="/")
+        else
+            a.header_logo(href="/")
+        .hamburgerplate
+            a(href="#sitenav", data-track="hamburger", data-label="Main Hamburger Menu", aria-label="Open Menu").hamburger
+        #sitenav
+            .container
+                .navholder
+                    ul.navigation
+                        -
+                            var mainnav = nav
+                            var currentClass="";
+                            var section = "/" + current
+                        each link in mainnav
+                            if section == link.link
+                                li.active(class=link.cssclass)
+                                    a(href=link.link)= link.label
+                                    if link.sub
+                                        ul
+                                            each sublink in link.sub
+                                                li(class=sublink.cssclass)
+                                                    a(href= link.link + sublink.link)= sublink.label
+                            else
+                                li(class=link.cssclass)
+                                    a(href=link.link)= link.label
+                                    if link.sub
+                                        ul
+                                            each sublink in link.sub
+                                                - var thelink = ""
+                                                - if (sublink.link.includes("#")){thelink = sublink.link}
+                                                - else{thelink = link.link + sublink.link}
+                                                li(class=sublink.cssclass)
+                                                    a(href= thelink)= sublink.label
+                        if !user || loggedin ==  undefined
+                            //- if current == "user/login"
+                            //-     li.active
+                            //-         a(href="/user/login") Login
+                            //- else
+                            //-     li
+                            //-         a(href="/user/login") Login
+                            //- if current == "user/register"
+                            //-     li.active
+                            //-         a(href="/user/register") Register
+                            //- else
+                            //-     li 
+                            //-         a(href="/user/register") Register
+                        else
+                            if user.role != "none" && user.role != "headchef"
+                                li
+                                    a(href="/admin") Admin Dashboard</a>
+                            li Hi #{user.displayName}
+                                span
+                                    a(href="/user/logout") Logout
+                            
+                    if user && user.role == "admin"
+                        include ./admin/adminheader.pug

@@ -1,0 +1,83 @@
+.pagecontrols
+    h3 Publishing Controls
+    label.selectholder
+        span.label Save
+        span.data
+            select#action(name="status")
+                each stat in status
+                    if(data.status == stat[0])
+                        option(value=stat[0], selected="selected") #{stat[1]}
+                    else
+                        option(value=stat[0]) #{stat[1]}
+    .publishdate
+        
+    .controls
+        a.cancel(href="/admin/all-pages") Cancel
+        input.warning.button(type="submit", value="Go")
+    
+.info
+    h3 Page Info
+    label.selectholder.parent
+        span.label Parent Page:
+        span.data
+            select(name="pages")
+                option(value="") None
+    .last_update
+        span.label Last Update: 
+        span.data= data.last_updated || "New Page"
+    .status
+        span.label Page Status: 
+        span.data= data.status || "New Page"        
+    label.selectholder.post_type
+        span.label Post Template:
+        span.data
+            select(name="template")
+                each template in post_templates
+                    if(data.template == template.slug)
+                       option(value=template.slug, selected='selected') #{template.label}
+                    else
+                        option(value=template.slug) #{template.label}
+    label.selectholder.post_type
+        span.label Post type:
+        span.data
+            select(name="post_type")
+                option(value="subpage") Default Subpage
+                each posttype in post_types
+                    if(data.post_type == posttype.slug)
+                        option(value=posttype.slug, selected='selected') #{posttype.label}
+                    else
+                        option(value=posttype.slug) #{posttype.label}
+    .validdates
+        h3 Valid Dates
+        p Some templates may use valid times. By default, these do nothing on their own.
+        label.textholder.startdate
+            input(type="text", name="meta[][startdate]").datepicker
+        label.textholder.enddate
+            input(type="text", name="meta[][enddate]").datepicker
+    .postimages
+        h3 Post Images
+        label.textholder.imgpath
+            span Featured Image
+            span.addImg
+            input.featured(type="text", id="post_featured_image", name="post_featured_image", value=data.post_featured_image)
+        -var featuredActive =""
+        if data.post_featured_image 
+            -featuredActive = "active"
+        .preview(class=featuredActive, rel="post_featured_image")
+            span.previewText Preview
+            .imgholder
+                a.removeImg(href="#post_featured_image", title="Remove Image") 
+                img(src=data.post_featured_image, alt="")
+        label.textholder.imgpath
+            span Thumbnail Image
+            span.addImg
+            input.featured(type="text", id="post_featured_thumbnail", name="post_featured_thumbnail", value=data.post_featured_thumbnail)
+        -var thumbActive =""
+        if data.post_featured_thumbnail 
+            -thumbActive = "active"
+        .preview(class=thumbActive, rel="post_featured_thumbnail")
+            span.previewText Preview
+            .imgholder
+                a.removeImg(href="#post_featured_thumbnail", title="Remove Image")
+                img(src=data.post_featured_thumbnail, alt="")
+    include seometa.pug

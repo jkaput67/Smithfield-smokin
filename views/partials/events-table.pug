@@ -1,0 +1,15 @@
+.eventslist
+    .headline
+        h2 2020 Events List
+    .table
+        .th_row
+            .th Date
+            .th Event Name
+            .th City
+            .th State
+        each event in events
+            .tr
+                .td !{event.event_date.toLocaleString('en-us', {weekday: "long",year:"numeric", month:"numeric",day:"numeric"})}
+                .td !{event.event_label}
+                .td !{event.event_city}
+                .td !{event.event_state}

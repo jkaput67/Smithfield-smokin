@@ -1,0 +1,28 @@
+.pagecontrols
+    h3 Set user status
+    label.selectholder
+        span.label Status
+        span.data
+            -var roles = role_types
+            select#action(name="role")
+                each role in roles
+                    if(data.role == role.label)
+                        option(value=role.label, selected='selected')=role.label
+                    else
+                        option(value=role.label)=role.label 
+    .controls
+        a.cancel(href="/admin/all-users") Cancel
+        input.button.warning(type="submit", value="Update User")
+    
+.info
+    h3 User Info:
+    span.label oAuthType: 
+    span.data= data.oauthType || "email"
+    span.label Created: 
+    span.data= data.created
+    span.label Updated: 
+    span.data= data.updated
+
+
+
+

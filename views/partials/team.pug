@@ -1,0 +1,59 @@
+
+h1=team_name
+if headchef
+    .teammembers
+        div.headchef Head Chef: 
+            span.name #{headchef}
+if team 
+    .teammembers
+        .members Team Members: 
+            span #{team}
+
+-//    .teammembers
+-//        each person in members
+-//            if person.role == "headchef"
+-//                div.headchef Head Chef: 
+-//                    span.name #{person.firstname} #{person.lastname}
+-//        div.members Team Members:&nbsp;
+-//            each person in members
+-//                if person.role != "headchef"
+-//                    span #{person.firstname} #{person.lastname}
+if user
+    if canedit == true && isediting == true || user.role =="admin" && isediting == true
+        .teamedit
+            h2 Update Your information here:
+            form(action=`/team/edit/${team_id}`, method="post")
+                //show sanction body ids, cannot be edited by user.
+                +textbox("Head Chef Display Name", "headchefname", "fullwidth", headchef, "Head Cook Display Name - ex: Chef Bob")
+                +textbox("Team Member Names", "teammembers", "fullwidth", team, "Team Member Names - ex: Jim, George, Jerry")
+                if cooknumber
+                    .numbers
+                        h3 Team Sanctioning Body IDs:
+                        ul
+                            each val, index in cooknumber
+                                li #{index}: #{val}
+                        p Missing/wrong IDs? Contact us with the button below.
+                .controls
+                    input.button.primary(type="submit", value="Submit Changes")
+                    a.button.secondary.modaltrigger(href="#reportaproblem") Report A Problem
+.table
+    .th_row
+        .th Competition
+        .th Place
+        .th Points
+    each event in events
+        .tr
+            .td=event.contest_name
+            .td=event.place
+            .td=event.points_earned
+    - // This needs to be further discussed with BBQ data, on how to get all team contests.
+    - // Current standings table only shows last contest entry, and shows historical data for all contests.
+    - // We can pull from standings and dedupe entries, but that is no ganerntee that all contests are captured or presented - only that the last contest we have info for.
+    - // If a contest happened between data pulls, we would miss that contest.
+
+if user
+    if canedit == true && isediting != true || user.role =="admin"
+        .controls
+            a.button.primary(href=`/team/edit/${team_id}`) Edit Team Details
+            br
+            a.button.secondary.modaltrigger(href="#reportaproblem") Report A Problem

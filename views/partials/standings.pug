@@ -1,0 +1,89 @@
+.headline
+    h2 Current Standings
+if search
+    .results
+        h3 <strong>Results for: </strong> "!{search}"
+        p We found the following !{resultnumber} results for your search:
+.table
+    .th_row
+        .th Standings
+        .th Team Name
+        .th Overall Points
+        .th GC
+        .th RGC
+        .th Third Place
+        .th Recent Change
+    each team in standings
+        -var tname = team.team_name.replace(/\s/g, '_').replace(/\'/g, '').toLowerCase();
+        a(href=`/team/${team.bbqdata_team_id}/${tname}`).tr
+            .td !{team.place}
+            .td !{team.team_name}
+            .td !{team.points}
+            .td=team.first_places || "N/A"
+            .td=team.second_places || "N/A"
+            .td=team.third_places || "N/A"
+            .td !{team.points_change}
+
+.controls
+    .seemore
+        if search
+            a.button.primary(href="/standings") Back
+        else
+            a.button.primary(href="/national-barbecue-championship") Back
+    .search#search
+        form.search(action="/standings/results", method="post")
+            +textbox("Search", "search", "searchbox","", "ex: My Team Name")
+            input(type="submit", value="go")
+    .pagination
+        -var next = parseInt(currentPage) + 1
+        -var prev = parseInt(currentPage) - 1
+        .pages
+            ul
+                if prev > 0
+                    li.arrow 
+                        a.nav.prev(href="/standings/"+prev)
+                else
+                    li.arrow
+                        a.nav.prev(href="/standings/"+pages)
+                if currentPage <= 3
+                    -for(i=1;i<=7;i++)
+                        if currentPage == i
+                            li.active 
+                                a(href="/standings/"+i)=i
+                        else
+                            li
+                                a(href="/standings/"+i)=i
+                    li &hellip;
+                    li 
+                        a(href="/standings/"+pages)=pages
+                else
+                    li 
+                        a(href="/standings/1") 1
+                    li &hellip;
+                    if currentPage >= pages -7
+                        -for(i=pages-7;i <= pages;i++)
+                            if currentPage == i
+                                li.active 
+                                    a(href="/standings/"+i)=i
+                            else
+                                li
+                                    a(href="/standings/"+i)=i
+                    else
+                        -var lower = currentPage - 3;
+                        -var upper = parseInt(currentPage) + 3;
+                        -for(i=lower;i <= upper;i++)
+                            if currentPage == i
+                                li.active 
+                                    a(href="/standings/"+i)=i
+                            else
+                                li
+                                    a(href="/standings/"+i)=i
+                        li &hellip;
+                        li 
+                            a(href="/standings/"+pages)=pages
+                if next > pages
+                    li.arrow
+                        a.nav.next(href="/standings/1")
+                else
+                    li.arrow
+                        a.nav.next(href="/standings/"+next)

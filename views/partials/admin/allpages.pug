@@ -1,0 +1,42 @@
+.allcontent.header
+    h2 All Pages
+    .controls
+        .filters
+            span Filter by:
+            select(name="status")
+                option(value="") Status
+                option(value="published") Published
+                option(value="draft") Draft
+            select(name="template")
+                option(value="") Template
+                option(value="Default") Default
+            select(name="type")
+                option(value="") Type
+                option(value="news") News
+                option(value="recipe") Recipe
+                option(value="default") Default
+        a.button(href="/admin/new-content") Add New Content
+.allcontent.content
+    table
+        tr
+            th.id ID
+            th.pageTitle Page Title
+            th Status
+            th Template
+            th Type
+            th Last Updated
+            th.edit Edit
+            th View
+        each page in data
+            tr
+                td.id #{page.cm_id}
+                td 
+                    a(href="/admin/edit/"+page.cm_id) #{page.title}
+                td= page.status || "default"
+                td= page.template || "default"
+                td= page.post_type || "default"
+                td #{page.publish_date}
+                td 
+                    a(href="/admin/edit/"+page.cm_id) edit
+                td 
+                    a(href="/admin/view/"+page.cm_id) view

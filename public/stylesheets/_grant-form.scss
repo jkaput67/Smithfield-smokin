@@ -1,0 +1,135 @@
+.grantForm {
+  main &.content {
+    background: url(/images/2018_woodbackground_long.jpg);
+  }
+
+  h1 {
+    margin-bottom: 1em;
+    text-align: center;
+  }
+
+  h2.center {
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  li {
+    margin-bottom: 0.5em;
+  }
+
+  .contact-info .textbox:nth-of-type(odd) {
+    margin-right: 4%;
+  }
+
+  .radioholder {
+    font-size: 18px;
+    // color: $color-dark;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+
+  .field {
+    margin-bottom: 1em;
+  }
+
+  .event-basic-info {
+    & > *:nth-child(odd) {
+      margin-right: 4%;
+    }
+
+    .textbox {
+      display: inline-block;
+    }
+  }
+
+  h3.label {
+    display: inline-block;
+  }
+
+  .checkbox {
+    display: flex;
+  }
+
+  .otherOption {
+    display: flex;
+    align-items: center;
+
+    .checkbox{
+      display: inline-block;
+    }
+  }
+
+  h4 {
+    margin-top: 0.5em;
+    font-size: 16px;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 3em;
+  }
+
+  #state {
+    height: 39px;
+    width: 100%;
+    border: 1px solid #860106;
+    border-radius: 0;
+    color: #860106;
+    font-family: "Oswald", Arial, sans-serif;
+  }
+
+  .submit-container {
+    margin-top: 3em;
+    display: flex;
+    justify-content: center;
+  }
+
+  .parsley-required {
+    list-style-type: none;
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .otherOption .textboxholder {
+    position: relative;
+
+    .parsley-required {
+      position: absolute;
+      top: 100%;
+    }
+
+  }
+
+  .otherOption {
+    margin-bottom: 7px;
+  }
+
+  .yesNo {
+    margin-bottom: 2em;
+    position: relative;
+
+    .parsley-errors-list {
+      position: absolute;
+      top: 100%;
+    }
+  }
+
+  label[for="event_admission-text"] {
+    margin-top: 0.5em;
+    font-size: 1.2em;
+    
+    & + .moneyfield {
+      
+
+      & > span {
+        font-size: 2em;
+      }
+    } 
+  }
+
+}

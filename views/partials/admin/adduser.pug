@@ -1,0 +1,22 @@
+form(action="/admin/save-user/new-user", method="post", class=formClass)
+    input(type="hidden", name="nonce", value=nonce)
+    input(type="hidden", name="__nexturl", value="/admin/all-users")
+    input(type="hidden", name="user_id", value=data.user_id)
+    //- input(type="hidden", name="publish_date", value=data.publish_date)
+    .contentcontainer
+        .col.left.main
+            .editor
+                label.textholder.req
+                    span First Name
+                    input.pagetitle(type="text", name="firstname")
+                label.textholder.req
+                    span Last Name
+                    input.pagetitle(type="text", name="lastname")
+                label.textholder.req
+                    span Email
+                    input.pagetitle(type="text", name="email")
+                //- label.textholder.req
+                //-     span Password
+                //-     input.pagetitle(type="text", name="password")
+        .col.right
+            include editorusersidebar.pug

@@ -1,0 +1,10 @@
+mixin modalTrigger(target, cssclass)
+    a(href="#"+target, class= "modaltrigger "+ cssclass) 
+        block
+
+mixin modal(target, cssclass)
+    -css = cssclass || ""
+    div(id= target, class="modal " + css)
+        a.closeModal(href="#"+target)
+        .modalcontent
+            block

@@ -1,0 +1,11 @@
+mixin accordion(id)
+    .accordionwrapper(id= id)
+        block
+
+mixin accordionItem(title)
+    .accordionitem
+        .accordionheader
+            h3=title
+        .accordioncontentholder
+            .accordioncontent
+                block

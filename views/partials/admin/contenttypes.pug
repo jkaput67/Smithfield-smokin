@@ -1,0 +1,25 @@
+.allcontent.header
+    h2 Content Types
+    .controls
+        a.button(href="/admin/type-manager/new") Add New Content Type
+.allcontent.types
+    p Types are used for roll up pages. They group content under a url known as a <em>slug</em>.
+    p <strong>Ex:</strong> <em>/recipe</em> would roll up all content items published with the <em>recipe</em> post type. Individual recipes would be found under <em>/recipe/recipe-slug</em>.
+    table
+        tr
+            th.id ID
+            th Title
+            th Slug
+            th Template
+            th.edit Edit
+        each item in data
+            tr
+                td.id #{item.type_id}
+                td 
+                    a(href="/admin/type-manager/edit/"+item.type_id) #{item.title}
+                td #{item.slug}
+                td=item.template || "Default"
+                td.edit 
+                    a(href="/admin/type-manager/edit/"+item.type_id) edit
+            
+

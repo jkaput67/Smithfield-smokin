@@ -1,0 +1,76 @@
+extends layout.pug
+
+block bodyContent
+    if user.role == "admin" || "accounts"
+        if intent == "setup"
+            h1 Welcome to the setup
+            p Please fill out the following:
+            include partials/setup.pug
+        else
+            section.adminstuff.clearafter
+                .container.clearafter
+                    if user.role == "admin"
+                        case intent
+                            when "committedcooksprizes"
+                                include partials/admin/committedcooksprizes.pug
+                            when "committedcooksapproval"
+                                include partials/admin/committedcooksapproval.pug
+                            when "all-pages"
+                                include partials/admin/allpages.pug
+                            when "new-content"
+                                h2 Add New
+                                include partials/admin/newcontent.pug
+                            when "edit-content"
+                                h2 Edit Content
+                                include partials/admin/editcontent.pug
+                            when "edit-user"
+                                h2 Edit User
+                                include partials/admin/edituser.pug
+                            when "all-users"
+                                include partials/admin/allusers.pug
+                            when "new-user"
+                                include partials/admin/adduser.pug
+                            when "type-manager"
+                                include partials/admin/contenttypes.pug
+                            when "type-new"
+                            when "type-edit"
+                                include partials/admin/type-manager.pug 
+                            when "media-manager"
+                                include partials/admin/mediamanager.pug 
+                            when "menu-manager"
+                                h2 Menu Management
+                            when "template-manager"
+                                include partials/admin/templatemanager.pug 
+                            when "dumpster"
+                                h2 Trash Management
+                            when "options"
+                                h2 Option Management
+                            when "reports"
+                                h2 Reports
+                            default
+                                include partials/admin/dashboard.pug
+                    else
+                        case intent
+                            when "committedcooksprizes"
+                                include partials/admin/committedcooksprizes.pug
+                            when "committedcooksapproval"
+                                include partials/admin/committedcooksapproval.pug
+                            default
+                                include partials/admin/dashboard.pug
+block script
+    link(rel='stylesheet', href='/stylesheets/admin.css')
+    script(src="/javascripts/tinymce/tinymce.min.js")
+    script(src="/javascripts/sortable.min.js")
+    script(src="/javascripts/fileupload/vendor/jquery.ui.widget.js")
+    script(src="/javascripts/fileupload/jquery.iframe-transport.js")
+    script(src="/javascripts/fileupload/jquery.fileupload.js")
+    script(src="/javascripts/jquery.sortable.min.js")
+
+block modals
+    +modal("mediauploader")
+        include ./partials/admin/mediauploader.pug
+    +modal("order")
+        h3 Order Children
+        ul.orderlist.sortable
+        .controls
+            a.button(href="submit") Submit

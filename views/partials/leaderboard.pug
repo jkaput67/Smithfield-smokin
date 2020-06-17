@@ -1,0 +1,15 @@
+.standings
+    .headline
+        h2 2019 Final Results
+    .table
+        .th_row
+            .th Place
+            .th Team Name
+            .th Head Cook
+        each team in standings
+            .tr
+                .td !{team.place}
+                .td !{team.team_name}
+                .td !{team.head_cook}
+    .buttonholder
+        a(href="/national-barbecue-championship").button.primary View Standings

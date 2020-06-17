@@ -1,0 +1,26 @@
+section.adminheader#admin
+    a(href="#admin").showAdmin 
+    .container.clearafter
+        a(href="/admin")
+            h1.logo Admin Panel
+        nav.adminNav
+            ul
+                li <a href="/admin">Dashboard</a>
+                li <a href="/admin/reports">Reports</a>
+                li <a href="/admin/all-pages">Content manager</a>
+                    ul
+                        li <a href="/admin/all-pages">All Content</a>
+                        //li <a href="/admin/new-content">Add new content</a>
+                        li <a href="/admin/media-manager">media manager</a>
+                        li <a href="/admin/menu-manager">Menu manager</a>
+                        li <a href="/admin/type-manager">Content Type Manager</a>
+                        li <a href="/admin/template-manager">Template Manager</a>
+                        li <a href="/admin/dumpster">Trash Control</a>
+                li <a href="/admin/all-users">User manager</a>
+                    ul
+                        li <a href="/admin/all-users">all users</a>
+                        li <a href="/admin/new-user">add new user</a>
+                        li my account
+                -//li <a href="/admin/options">Options</a>
+                -//    ul
+                -//        li <a href="/admin/prizes">Prizes</a>

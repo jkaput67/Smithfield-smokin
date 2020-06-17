@@ -1,0 +1,37 @@
+.recentwinners h3.subhead {
+    color: white;
+}
+
+.content.submitwin h3 {
+    margin-top: 2%;
+    margin-bottom: 3%;
+    font-size: 1.7vw;
+
+}
+
+@media screen and (max-width: 768px) {
+    .Grantwinners li {
+        word-break: break-word;
+        hyphens: auto;
+        width: 50%;
+    }
+
+    .content.committed {
+        flex-wrap: wrap;
+    }
+
+    .content.committed .col.left:after {
+        top: unset;
+        bottom: -1.5rem;
+        height: 1px;
+        width: 100%;
+    }
+
+    .col.right.share {
+        margin-top: 3rem;
+    }
+
+    .winnersholder {
+        column-count: 2;
+    }
+}

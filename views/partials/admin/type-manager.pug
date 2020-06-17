@@ -1,0 +1,63 @@
+form(action="/admin/type-manager/save", method="post", class=formClass)
+    input(type="hidden", name="nonce", value=nonce)
+    input(type="hidden", name="__nexturl", value="/admin/type-manager")
+    input(type="hidden", name="type_id", value=data.type_id)
+    case intent
+        when "type-edit"
+            h2 Editing: #{data.label}
+        when "type-new"
+            h2 New
+    .contentcontainer
+        .col.left.main
+            .editor.editpost
+                label.textholder.req
+                    span Page Title - 
+                    input.pagetitle(type="text", name="title", value=data.title)
+                label.textholder.pageslug.req
+                    span Page Slug <i class="info"></i>
+                    span.slugholder #{data.slug} <a href="#editslug" class="editslug">edit</a>
+                    input.slug(type="text", name="slug", value=data.slug)
+                hr
+                p Optional rollup page content. This appears above the subcontent.
+                label.textareaholder.customEditor.req
+                    span Intro Content <i class="info"></i>
+                    textarea#maincontent(name="intro")= data.intro
+        .col.right
+            .pagecontrols
+                h3 Publishing Controls
+                .controls
+                    a.cancel(href="/admin/type-manager") Cancel
+                    input.warning.button(type="submit", value="Save")
+            .info
+                h3 Page Info
+                label.selectholder.post_type
+                        span.label Post Template:
+                        span.data
+                            select(name="template")
+                                each template in post_templates
+                                    if(data.template == template.slug)
+                                        option(value=template.slug, selected='selected') #{template.label}
+                                    else
+                                        option(value=template.slug) #{template.label}
+                .postorder
+                    h3 Order Children
+                    p By default, content will appear in order of creation.
+                    p 
+                        a.button.modaltrigger.orderitems(href="#order", rel=data.slug) Order
+                .postimages
+                    h3 Rollup Page Banner Image
+                    p Optional banner image.
+                    label.textholder.imgpath
+                        span Banner Image
+                        span.addImg
+                        input.featured(type="text", id="post_featured_image", name="post_featured_image", value=data.banner)
+                    -var featuredActive =""
+                    if data.banner
+                        -featuredActive = "active"
+                    .preview(class=featuredActive, rel="post_featured_image")
+                        span.previewText Preview
+                        .imgholder
+                            a.removeImg(href="#post_featured_image", title="Remove Image") 
+                            img(src=data.banner, alt="")
+                include seometa.pug
+

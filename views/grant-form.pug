@@ -1,0 +1,385 @@
+extends layout.pug
+
+block bodyContent
+  .grantForm.woodgrain.content
+    p Applications for the 2020 Smokin' With Smithfield Grant program are now closed.
+    p Proud to be the largest pork producer in the world, Smithfield has been providing quality, hand-trimmed products for families to prepare in their kitchens and backyards since 1936. We have continued to grow our support of passionate barbecue enthusiasts engaged in the sport of barbecue. Smithfield is investing in the future of barbecue and is now accepting applications for the Smokin' With Smithfield Grant Program designed to support barbecue competitions across the United States.
+    p The Smokin' With Smithfield Grant Program is open to Nonprofit, Community, and Event Organizers that host sanctioned barbecue contests, while delivering key services and resources to the contest's participating teams.
+    p While Smithfield has other barbecue-specific programs that support the sport, our Smokin' With Smithfield Grant Program provides funding to sanctioned competitions to make them more enticing to both the Cooks and the General Public. Smokin’ With Smithfield Grants are a maximum of $3,000 to deepen the entire prize purse payout among the top 10 of all categories and top 10 overall.
+    //- h1 2020 Grant Program
+//-     p Applications for the 2020 Smokin' With Smithfield Grant program are now open.
+//-     p Proud to be the largest pork producer in the world, Smithfield has been providing quality, hand-trimmed products for families to prepare in their kitchens and backyards since 1936. We have continued to grow our support of passionate barbecue enthusiasts engaged in the sport of barbecue. Smithfield is investing in the future of barbecue and is now accepting applications for the Smokin' With Smithfield Grant Program designed to support barbecue competitions across the United States.
+//-     p The Smokin' With Smithfield Grant Program is open to Nonprofit, Community, and Event Organizers that host sanctioned barbecue contests, while delivering key services and resources to the contest's participating teams.
+//-     p While Smithfield has other barbecue-specific programs that support the sport, our Smokin' With Smithfield Grant Program provides funding to sanctioned competitions to make them more enticing to both the Cooks and the General Public. Smokin’ With Smithfield Grants are a maximum of $3,000 to deepen the entire prize purse payout among the top 10 of all categories and top 10 overall. 
+//-     p Applications are currently being accepted for sanctioned barbecue contests, local community events and fundraisers occurring in 2020. All applications must be submitted by 
+//-       strong(style="text-decoration: underline;") November 16, 2019
+//-       |.
+    
+    
+//-     h2.center Rules and Requirements
+//-     include ./partials/rules.pug
+
+//-     h2.center Qualities of a Successful BBQ Event
+//-     include ./partials/qualities.pug
+
+//-     h2.center Application Page
+//-     p To have your competition event considered for a Smokin' With Smithfield Grant, please complete all fields in the application form below.
+//-     p Before submitting a Smokin' With Smithfield Grant Application, be sure to set aside time to thoroughly fill out the application. You will not be able to go back and update your application once submitted.
+//-     p Smithfield will carefully consider each application. If your event is selected for a potential Grant, a Smithfield Grant Coordinator will contact you to continue the screening process. All Grant decisions are in the sole discretion of Smithfield. Any Grant awarded by Smithfield is subject to and contingent on the recipient's acceptance of and compliance with Smithfield's standard terms and conditions, which will be provided upon notification of any potential Grant award.
+//-     form(id="grantapplication", name="grantapplication", method="post", action="/grant")
+//-       hr
+//-       fieldset.contact-info
+//-         h2 Application Questions: Contact Information
+//-         +textbox("First Name", "first_name", "", "", "* First Name", false, 'text', true)
+//-         +textbox("First Name", "last_name", "", "", "* Last Name", false, 'text', true)
+//-         +textbox("First Name", "phone", "", "", "* Contact Phone Number", false, 'text', true)
+//-         +textbox("First Name", "email", "", "", "* Contact Email Address", false, "email", true)
+//-         //- .txtfield
+//-         //-   input(type="text", name="first_name", placeholder="* First Name", required)
+//-         //- .txtfield
+//-         //-   input(type="text", name="last_name", placeholder="* Last Name", required)
+//-         //- .txtfield
+//-         //-   input(type="text", name="phone", placeholder="* Contact Phone Number", required)
+//-         //- .txtfield
+//-         //-   input(type="email", name="email", placeholder="* Contact Email Address", required)
+
+//-       hr
+//-       fieldset
+//-         h2 Event Information:
+//-         +hidden('type_of_grant', 'type_of_grant', 'Grant Funding')  
+//-         .event-basic-info
+//-           +textbox("First Name", "event_name", "", "", "* Event Name", false, 'text', true)
+//-           //- input(type="text", name="event_name", placeholder="* Event Name", required)
+//-           +textbox("Event Date", "EventDate", "", "", "* Event Date", false, 'text', true, 'event_date')
+//-           //- label(for="event_date") * Event Date
+//-           //- input#EventDate(type="text", name="event_date", required, placeholder="*")
+//-           +textbox("Event City", "event_city", "", "", "* Event City", false, 'text', true) 
+//-           //- input(type="text", name="event_city", placeholder="* Event City", required)
+//-           label.textbox
+//-             +stateSelect('', 'state', '', '', 'event_state', true, true, true)
+//-             //- select(name="event_state", required)
+//-               option(value="") * Event State
+//-               option(value=AL) AL
+//-               option(value=AK) AK
+//-               option(value=AZ) AZ
+//-               option(value=AR) AR
+//-               option(value=CA) CA
+//-               option(value=CO) CO
+//-               option(value=CT) CT
+//-               option(value=DE) DE
+//-               option(value=DC) DC
+//-               option(value=FL) FL
+//-               option(value=GA) GA
+//-               option(value=HI) HI
+//-               option(value=ID) ID
+//-               option(value=IL) IL
+//-               option(value=IN) IN
+//-               option(value=IA) IA
+//-               option(value=KS) KS
+//-               option(value=KY) KY
+//-               option(value=LA) LA
+//-               option(value=ME) ME
+//-               option(value=MD) MD
+//-               option(value=MA) MA
+//-               option(value=MI) MI
+//-               option(value=MN) MN
+//-               option(value=MS) MS
+//-               option(value=MO) MO
+//-               option(value=MT) MT
+//-               option(value=NE) NE
+//-               option(value=NV) NV
+//-               option(value=NH) NH
+//-               option(value=NJ) NJ
+//-               option(value=NM) NM
+//-               option(value=NY) NY
+//-               option(value=NC) NC
+//-               option(value=ND) ND
+//-               option(value=OH) OH
+//-               option(value=OK) OK
+//-               option(value=OR) OR
+//-               option(value=PA) PA
+//-               option(value=RI) RI
+//-               option(value=SC) SC
+//-               option(value=SD) SD
+//-               option(value=TN) TN
+//-               option(value=TX) TX
+//-               option(value=UT) UT
+//-               option(value=VT) VT
+//-               option(value=VA) VA
+//-               option(value=WA) WA
+//-               option(value=WV) WV
+//-               option(value=WI) WI
+//-               option(value=WY) WY
+//-           +textbox("Event Website", "event_website", "", "", "Event Website", false, 'text', true)
+//-             //- input(type="text", name="event_website", placeholder="Event Website")
+//-         .field
+//-           h3
+//-             label(for="event_how_long") How many years has the competition/event been in existence?
+//-           +textbox("Event How Long", "event_how_long", "", "", "*", false, 'text', true)
+//-           //- input(type="text", name="event_how_long", required, placeholder="*")
+//-         .field
+//-           h3
+//-             label(for="event_charities") What charities, if any, are the beneficiary of the event?
+//-           +textbox("Event Charities", "event_charities", "", "", "*", false, 'text', true)
+//-           //- input(type="text", name="event_charities")
+//-         .field
+//-           h3.label
+//-             label(for="event_activities") What other activities are part of the event?
+//-           +checkbox('Festival', 'event_activities', "", 'Festival', false)
+//-           +checkbox('Walk/Run', 'event_activities', "", 'Walk/Run', false)
+//-           +checkbox('Live Music', 'event_activities', "", 'Live Music', false)
+//-           +checkbox('Food Vendor Area', 'event_activities', "", 'Food Vendor Area', false)
+//-           +checkbox('Kids Activities', 'event_activities', "", 'Kids Activities', false)
+//-           +checkbox('Rodeos', 'event_activities', "", 'Rodeos', false)
+//-           //- +grantform-radiobutton('event_activities', 'Festival', "checkbox")
+//-           //- +grantform-radiobutton('event_activities', 'Walk/Run', "checkbox")
+//-           //- +grantform-radiobutton('event_activities', 'Live Music', "checkbox")
+//-           //- +grantform-radiobutton('event_activities', 'Food Vendor Area', "checkbox")
+//-           //- +grantform-radiobutton('event_activities', 'Kids Activities', "checkbox")
+//-           //- +grantform-radiobutton('event_activities', 'Rodeos', "checkbox")
+//-           .otherOption
+//-             +checkbox('Other', 'event_activities', "", 'Other', false)
+//-             +textbox("Other", "event_activities-othertext", "", "", "*", false, 'text', true)
+//-             //- +grantform-radiobutton('event_activities', 'Other', "checkbox")
+//-             //- input(type="text", name="event_activities-othertext")
+//-         .field
+//-           h3
+//-             label(for="event_attendance") What is the average consumer attendance?
+//-           +textbox("Event Attendance", "event_attendance", "", "", "*", false, 'text', true)
+//-             //- input(type="text", name="event_attendance")
+//-         .field.yesNo
+//-           h3
+//-             label(for="event_open_to_public") Is the event open to the public?
+//-           +radiobutton('Yes', 'event_open_to_public', "", 'Yes', false, true)
+//-             .dot
+//-             span Yes
+//-           +radiobutton('No', 'event_open_to_public', "", 'Yes', false, true)
+//-             .dot
+//-             span No
+//-           //- +grantform-radiobutton('event_open_to_public', 'Yes')
+//-           //- +grantform-radiobutton('event_open_to_public', 'No')
+//-         .field.yesNo
+//-           h3
+//-             label(for="event_admission") Does the event require
+//-           +radiobutton('paid admission', 'event_admission', "", 'paid admission', false, true)
+//-             .dot
+//-             span paid admission
+//-           +radiobutton('free to the public?', 'event_admission', "", 'free to the public?', false, true)
+//-             .dot
+//-             span free to the public?
+//-           //- +grantform-radiobutton('event_admission', 'paid admission')
+//-           //- |  or 
+//-           //- +grantform-radiobutton('event_admission', 'free to the public?')
+//-           .subfield
+//-             label(for="event_admission-text") If paid, what is the approximate ticket price?
+//-             .moneyfield
+//-               span $
+//-               +textbox("Event Admission Text", "event_admission-text", "", "", "", false, 'text', true)
+//-               //- input(type="text", name="event_admission-text")
+
+//-       hr
+//-       fieldset#BBQContestInformation
+//-         h2 BBQ Contest Information
+//-         .field
+//-           h3
+//-             label(for="event_sanctioning") What sanctioning body will be used for the rules?
+//-           +textbox("Event Sanctioning", "event_sanctioning", "", "", "*", false, 'text', true)
+//-           //- input(type="text", name="event_sanctioning", placeholder="*", required)
+//-         .field.yesNo
+//-           h3
+//-             label(for="event_automatic_qualifier") Is the contest an automatic qualifier for other competitions?
+//-           +radiobutton('Yes', 'event_automatic_qualifier', "", 'Yes', false, true)
+//-             .dot
+//-             span Yes
+//-           +radiobutton('No', 'event_automatic_qualifier', "", 'No', false, true)
+//-             .dot
+//-             span No
+//-           //- +grantform-radiobutton('event_automatic_qualifier', 'Yes')
+//-           //- +grantform-radiobutton('event_automatic_qualifier', 'No')
+//-           .subfield
+//-             h4
+//-               label(for="event_automatic_qualifier-text") If yes, please list qualifier contest(s)
+//-             +textbox("Event Automatic Qualifier Text", "event_automatic_qualifier-text", "", "", "", false, 'text', true)
+//-             //- input(type="text", name="event_automatic_qualifier-text")
+//-         .field
+//-           h3
+//-             label(for="event_teams") How many teams do you anticipate will compete?
+//-           +textbox("Event Teams", "event_teams", "", "", "*", false, 'text', true)
+//-           //- input(type="text", name="event_teams", required, placeholder="*")
+//-         .field
+//-           h3
+//-             label(for="event_judges") How many judges will be included?
+//-           +textbox("Event Judges", "event_judges", "", "", "*", false, 'text', true)
+//-           //- input(type="text", name="event_judges", required, placeholder="*")
+//-         .field
+//-           h3
+//-             label(for="event_entry_fee") What is the current entry fee for BBQ competition teams?
+//-           +textbox("Event Entry Fee", "event_entry_fee", "", "", "*", false, 'text', true)
+//-           //- input(type="text", name="event_entry_fee", placeholder="*", required)
+//-         .field
+//-           h3
+//-             label(for="event_prize_purse") What is the current prize purse?
+//-           +textbox("Event Prize Purse", "event_prize_purse", "", "", "*", false, 'text', true)
+//-           //- input(type="text", name="event_prize_purse", placeholder="*", required)
+//-         .field
+//-           h3
+//-             label(for="event_prize_disbursed") How is prize money disbursed to the winners?
+//-           +textbox("Event Prize Disbursed", "event_prize_disbursed", "", "", "*", false, 'text', true)
+//-           //- input(type="text", name="event_prize_disbursed", placeholder="*", required)
+//-         .field
+//-           h3
+//-             label(for="event_other_categories") Does the event include other category competitions?
+//-           +checkbox('Kid\'s Que', 'event_other_categories', "", 'Kid\'s Que', false)
+//-           +checkbox('Dessert Contest', 'event_other_categories', "", 'Dessert Contest', false)
+//-           +checkbox('Sauce Contest', 'event_other_categories', "", 'Sauce Contest', false)
+//-           +checkbox('Sides Contest', 'event_other_categories', "", 'Sides Contest', false)
+//-           //- +grantform-radiobutton('event_other_categories', 'Kid\'s Que', 'checkbox')
+//-           //- +grantform-radiobutton('event_other_categories', 'Dessert Contest', 'checkbox')
+//-           //- +grantform-radiobutton('event_other_categories', 'Sauce Contest', 'checkbox')
+//-           //- +grantform-radiobutton('event_other_categories', 'Sides Contest', 'checkbox')
+//-           .otherOption
+//-             +checkbox('Other (Fill in the blank)', 'event_other_categories', "", 'Other (Fill in the blank)', false)
+//-             +textbox("Event Other Categories Text", "event_other_categories-othertext", "", "", "", false, 'text', true)
+//-             //- +grantform-radiobutton('event_other_categories', 'Other (Fill in the blank)', 'checkbox')
+//-             //- input(type="text", name="event_other_categories-othertext")
+//-         .field.yesNo
+//-           h3
+//-             label(for="event_backyard_bbq") Is there a Backyard BBQ Contest?
+//-           +radiobutton('Yes', 'event_backyard_bbq', "", 'Yes', false, true)
+//-             .dot
+//-             span Yes
+//-           +radiobutton('No', 'event_backyard_bbq', "", 'No', false, true)
+//-             .dot
+//-             span No
+//-           //- +grantform-radiobutton('event_backyard_bbq', 'Yes')
+//-           //- +grantform-radiobutton('event_backyard_bbq', 'No')
+//-           .subfield.textareaField
+//-             h4
+//-               label(for="event_backyard_bbq-text") If yes, please provide details about the Backyard BBQ Contest.
+//-             +textarea('', 'event_backyard_bbq-text', '',  '', '', null, true)
+//-             //- textarea(name="event_backyard_bbq-text", cols="30", rows="3")
+//-         .field.yesNo
+//-           h3
+//-             label(for="event_brand_sponsors") Are there any other Meat Company or Brand Sponsors associated with the contest?
+//-           +radiobutton('Yes', 'event_brand_sponsors', "", 'Yes', false, true)
+//-             .dot
+//-             span Yes
+//-           +radiobutton('No', 'event_brand_sponsors', "", 'No', false, true)
+//-             .dot
+//-             span No
+//-           //- +grantform-radiobutton('event_brand_sponsors', 'Yes')
+//-           //- +grantform-radiobutton('event_brand_sponsors', 'No')
+//-           .subfield.textareaField
+//-             h4
+//-               label(for="event_brand_sponsors-text") If yes, please name:
+//-             +textarea('', 'event_brand_sponsors-text', '',  '', '', null, true)
+//-             //- textarea(name="event_brand_sponsors-text", cols="30", rows="3")
+//-         .field.yesNo
+//-           h3
+//-             label(for="event_retail_partners") Are there any food retail partners involved?
+//-           +radiobutton('Yes', 'event_retail_partners', "", 'Yes', false, true)
+//-             .dot
+//-             span Yes
+//-           +radiobutton('No', 'event_retail_partners', "", 'No', false, true)
+//-             .dot
+//-             span No          
+//-           //- +grantform-radiobutton('event_retail_partners', 'Yes')
+//-           //- +grantform-radiobutton('event_retail_partners', 'No')
+//-           .subfield.textareaField
+//-             h4
+//-               label(for="event_retail_partners-text") If yes, please name:
+//-             +textarea('', 'event_retail_partners-text', '',  '', '', null, true)
+//-             //- textarea(name="event_retail_partners-text", cols="30", rows="3")
+//-         .field
+//-           h3
+//-             label(for="event_promotion") How will the event be promoted?
+//-           +checkbox('Local Radio', 'event_promotion', "", 'Local Radio', false)
+//-           +checkbox('Local TV', 'event_promotion', "", 'Local TV', false)
+//-           +checkbox('Newspaper', 'event_promotion', "", 'Newspaper', false)
+//-           //- +grantform-radiobutton('event_promotion', 'Local Radio', 'checkbox')
+//-           //- +grantform-radiobutton('event_promotion', 'Local TV', 'checkbox')
+//-           //- +grantform-radiobutton('event_promotion', 'Newspaper', 'checkbox')
+//-           .otherOption
+//-             +checkbox('Website', 'event_promotion', "", 'Website', false)
+//-             +textbox("Event Promotion Website", "event_promotion-website", "", "", "", false, 'text', true)
+//-             //- +grantform-radiobutton('event_promotion', 'Website', 'checkbox')
+//-             //- input(type="text", name="event_promotion-website")
+//-           .otherOption
+//-             +checkbox('Social Media', 'event_promotion', "", 'Social Media', false)
+//-             +textbox("Event Promotion Social Media", "event_promotion-socialmedia", "", "", "", false, 'text', true)
+//-             //- +grantform-radiobutton('event_promotion', 'Social Media', 'checkbox')
+//-             //- input(type="text", name="event_promotion-socialmedia")
+//-           .otherOption
+//-             +checkbox('Other', 'event_promotion', "", 'Other', false)
+//-             +textbox("Event Promotion Other", "event_promotion-othertext", "", "", "", false, 'text', true)
+//-             //- +grantform-radiobutton('event_promotion', 'Other', 'checkbox')
+//-             //- input(type="text", name="event_promotion-othertext")
+//-         .field.yesNo
+//-           h3
+//-             label(for="event_past_media_partners") Has the event had media partners (i.e. local TV or radio stations) in the past?
+//-           +radiobutton('Yes', 'event_past_media_partners', "", 'Yes', false, true)
+//-             .dot
+//-             span Yes
+//-           +radiobutton('No', 'event_past_media_partners', "", 'No', false, true)
+//-             .dot
+//-             span No
+//-           //- +grantform-radiobutton('event_past_media_partners', 'Yes')
+//-           //- +grantform-radiobutton('event_past_media_partners', 'No')
+//-           .subfield.textareaField
+//-             h4
+//-               label(for="event_past_media_partners-text") If yes, please list partner(s):
+//-             +textarea('', 'event_past_media_partners-text', '',  '', '', null, true)
+//-             //- textarea(name="event_past_media_partners-text", cols="30", rows="3")
+//-         .field
+//-           h3
+//-             label(for="event_current_media_partners") Which media partners are you targeting this year?
+//-           +textbox("Event Current Media Partners", "event_current_media_partners", "", "", "*", false, 'text', true)
+//-           //- input(type="text", name="event_current_media_partners", required, placeholder="*")
+
+//-       hr
+//-       fieldset
+//-         +hidden('year', 'year', '2019')
+//-         //- input(type="hidden", name="year", value="2018")
+//-         h2 Additional Information
+//-         .field
+//-           h3
+//-             label(for="event_why_do_you_believe") Why do you believe your event/contest should be considered a Smokin' With Smithfield Grant recipient? (1000 characters max)
+//-           +textarea('', 'event_why_do_you_believe', '',  '', '*', '1000', true)
+//-           //- textarea(name="event_why_do_you_believe", cols="30", rows="3", placeholder="*", maxlength="1000" required)
+//-         .field(style="padding-top: 30px")
+//-           h3
+//-             label(for="event_additional_documentation") Please upload any additional documentation you would like to provide.
+//-           +hidden('doc_ids', 'doc_ids', '', 'event_additional_documentation_ids')
+//-           +hidden('doc_names', 'doc_names', '', 'event_additional_documentation_names')
+//-           //- input(type="hidden", name="event_additional_documentation_ids", id="doc_ids")
+//-           //- input(type="hidden", name="event_additional_documentation_names", id="doc_names")
+//-           div#UploadAdditionalDocumentation
+
+//-             input(type="file", data-track="Upload File")
+//-           span#uploadProgress
+//-           ul#Documentation
+            
+//-         .submit-container
+//-           button#SubmitForm.button.primary(type='submit', data-track="Submit Application") Submit
+
+          
+//- block script
+//-   script(src="/javascripts/parsley.js")
+//-   script.
+//-     window.utilities = {};
+//-     window.utilities.doToAll = function(nodeList, callback) {
+//-       Array.from(nodeList).forEach(callback);
+//-     }
+
+//-     window.utilities.makeRequest = function(method, url) {
+//-       return new Promise((resolve) => {
+//-         fetch(url, { method })
+//-           .then(res => res.json())
+//-           .then(data => resolve(data))
+//-           .catch(error => resolve({error}));
+//-       })
+//-     }
+//-   script(src="/javascripts/form.js")
+//-   script(src="/javascripts/grantform.js")
+//-   script.
+//-     var picker = new Pikaday({ field: document.getElementById('EventDate') })

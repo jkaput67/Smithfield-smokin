@@ -1,0 +1,16 @@
+mixin slider(id, cssClass)
+  -var c = cssClass || ""
+  .slider(id=id, class="imscore-slider " + c)
+    .preloader
+    .slidesholder
+      block
+
+
+mixin slide(cssClass, img)
+  -var c = cssClass || ""
+  .slide(class=cssClass)
+      .imgholder(style="background-image:url("+img+");")
+      .content
+        .container
+          .holder
+            block

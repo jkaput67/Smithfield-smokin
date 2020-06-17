@@ -1,0 +1,56 @@
+.allcontent.header
+    h2 User Management
+    .controls
+        -//.filters
+        -//    span Filter by:
+        a.button(href="/admin/export-user") Export Users
+        a.button(href="/admin/new-user") Add New User
+.allcontent.users
+    h3 Admin Users
+    table
+        tr
+            th.id ID
+            th.pageTitle First Name
+            th Last Name
+            th Role
+            th Email
+            th Edit
+        each user in data
+            if(user.role=="admin")
+                tr
+                    td.id #{user.user_id}
+                    td #{user.firstname}
+                    td #{user.lastname}
+                    td= user.role || "subscriber"
+                    td #{user.email}
+                    
+                    td 
+                        a(href="/admin/edit-user/"+user.user_id) edit
+.allcontent.users
+    h3 All Users
+    table.allPages
+        tr
+            th.id ID
+            th.pageTitle First Name
+            th Last Name
+            th Role
+            th Email
+            th Login Type
+            th IP
+            th User Agent
+            th Edit
+        each user in data
+            if(user.role!="admin")
+                tr
+                    td.id #{user.user_id}
+                    td #{user.firstname}
+                    td #{user.lastname}
+                    td= user.role || "subscriber"
+                    td 
+                        a(href="mailto:"+user.email) #{user.email}
+                    td #{user.oauthType}
+                    td #{user.ip}
+                    td 
+                        span.ua #{user.ua}
+                    td 
+                        a(href="/admin/edit-user/"+user.user_id) edit

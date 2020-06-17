@@ -1,0 +1,23 @@
+form(action="/admin/save-post/update-post", method="post", class=formClass)
+    input(type="hidden", name="nonce", value=nonce)
+    input(type="hidden", name="__nexturl", value="/admin/all-pages")
+    input(type="hidden", name="cm_id", value=data.cm_id)
+    input(type="hidden", name="publish_date", value=data.publish_date)
+    .contentcontainer
+        .col.left.main
+            .editor.editpost
+                label.textholder.req
+                    span Page Title
+                    input.pagetitle(type="text", name="title", value=data.title)
+                label.textholder.pageslug.req
+                    span Page Slug <i class="info"></i>
+                    span.slugholder #{data.post_slug} <a href="#editslug" class="editslug">edit</a>
+                    input.slug(type="text", name="slug", value=data.post_slug)
+                label.textareaholder
+                    span Exerpt Text <i class="info"></i>
+                    textarea#excerptcontent(name="post_excerpt")= data.post_excerpt
+                label.textareaholder.customEditor.req
+                    span Page Content <i class="info"></i>
+                    textarea#maincontent(name="pagecontent")= data.content
+        .col.right
+            include editorsidebar.pug

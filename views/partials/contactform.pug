@@ -1,0 +1,25 @@
+if cssClass
+    - formClass =" " + cssClass
+else
+    - formClass =""
+if ajax == true
+    - ajaxClass = " ajax"
+else
+    - ajaxClass = ""
+
+form(action="/contact", method="post", class="contact" + formClass + ajaxClass)
+    .formholder
+        .headline
+            h2 Contact Us
+        p For Questions about Smokin' with Smithfield, please complete the form below.
+        +textbox("Email Address", "email", "email fullwidth req","", "ex: johnsmith@gmail.com")
+        +textbox("Subject", "subject", "subject fullwidth req","", "ex: Having issues with...")
+        +textarea("Message", "message", "", "", "")
+        .recaptcha
+            .g-recaptcha(data-sitekey= captcha)
+        .controls
+            input.button.primary(type="submit", value="Send")
+        .pleasecall
+            p Or please call 1-855-411-PORK (7675)
+    .successMsg
+    

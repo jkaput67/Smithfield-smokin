@@ -1,0 +1,113 @@
+.content.applyform.hidden#apply
+    a(href="#apply").closeForm X
+    .headline
+        h2 <span class="logo"></span> 2020 Committed Cooks
+    p Champion Pitmasters are winning with Smithfield and you can, too! Commit to cooking with Smithfield this 2020 barbecue season and you will receive Smokin' swag just for participating. 
+    p There's only a few requirements to sign up - pay a small shipping fee of $25, and be a member of one of the sport's major sanctioning bodies. Once a Smithfield Committed Cook, Show Us Your Smithfield (#showusyoursmithfield) on Facebook and Instagram.
+    p Be sure to come back and track your 1st place finishes in pork and ribs to win great prizes through our Walkin’ with Smithfield Incentive Program. 
+    p See full list of prizes and eligibility requirements *Limited to the first 300 program signups*
+    .dashborder
+    .formholder
+        form.pp.validate(id="cooksapplication", name="cooksapplication", method="post", action="/committed-cooks-application")
+            h3 Application Questions: Contact Information
+            .demographic
+                +textbox("* Head Cook First Name", "first_name", "firstname req","", "* Head Cook First Name")
+                +textbox("* Head Cook Last Name", "last_name", "lastname req","", "* Head Cook Last Name")
+                +textbox("* Contact Address", "contact_address", "address req","", "* Contact Address")
+                +textbox("* City", "contact_city", "city req","", "* City")
+                +textbox("* State", "contact_state", "state req","", "* State")
+                +textbox("* Zip Code", "contact_zipcode", "zip req","", "* Zip Code")
+                +textbox("* Contact Phone Number", "phone", "phone req","", "* Contact Phone Number")
+                +textbox("* Contact Email Address", "email", "email req","", "* Contact Email Address")
+            h3 Additional Information:
+            .additional
+                +textbox("* Team Name", "team_name", "teamname fullwidth req","", "* Team Name")
+                .teamMembers
+                    h4 Number of Team Members:
+                    +radiobutton("", "number_of_team_members","","1")
+                        span.dot
+                        span 1
+                    +radiobutton("", "number_of_team_members","","2")
+                        span.dot
+                        span 2
+                    +radiobutton("", "number_of_team_members","","3")
+                        span.dot
+                        span 3
+                    +radiobutton("", "number_of_team_members","","4")
+                        span.dot
+                        span 4    
+                    +radiobutton("", "number_of_team_members","","5")
+                        span.dot
+                        span 5
+                    +radiobutton("", "number_of_team_members","","6+")
+                        span.dot
+                        span 6+
+                    +numberbox("More than 6: ","number_of_team_members_othertext", "number_of_team_members_othertext fullwidth extramembers","", "6")
+                .sanctioningBody
+                    h4 Which sanctioning bodies are you a member of? (Check all that apply)
+                    +checkbox("Kansas City Barbeque Society",'sanctioning_body','','Kansas City Barbeque Society')
+                    +checkbox("International Barbeque Cookers Association",'sanctioning_body','','International Barbeque Cookers Association')
+                    +checkbox("St. Louis BBQ Society",'sanctioning_body','','St. Louis BBQ Society')
+                    +checkbox("Memphis Barbecue Network",'sanctioning_body','','Memphis Barbecue Network')
+                    +checkbox("Other", "sanctioning_body","othersanction","other","")
+                    +textbox("Other Sanctioning Body", "sanctioning_body_othertext", "sanctioning_body-othertext fullwidth","", "Sanctioning Body Name")
+                .memberinfo
+                    h4 List name of ONE (1) Sanctioning Body and Head Cook Member #:
+                    +textbox("* Sanctioning Body Name", "sanctioning_body_number_name", "sanctionname req","", "* Sanctioning Body Name")
+                    +textbox("* Sanctioning Body Head Cook Member #", "sanctioning_body_number", "sanctionnumber req","", "* Sanctioning Body Head Cook Member #")
+                .social
+                    +textbox("Team Social Media Page/Website URL (optional):", "website", "website fullwidth","", "(optional)")
+                .instagram
+                    +textbox("Team Instagram Handle (optional):", "instagram", "fullwidth","", "(optional)")
+                .foodservice
+                    h4 Are you a Food Service Operator?
+                    +radiobutton("Other", "food_service_operator","foodservice","1","")
+                        span.dot
+                        span Yes
+                    +radiobutton("Other", "food_service_operator","foodservice","0","")
+                        span.dot
+                        span No
+                    .info
+                        h4 If yes, please share your:
+                        +textbox("Business Name", "business_name", "business_name","", "Business Name")
+                        +textbox("Business Address", "business_address", "business_address","", "Business Address")
+                        +textbox("Business City", "business_city", "business_city","", "Business City")
+                        +textbox("Business State", "business_state", "business_state","", "Business State")
+                        +textbox("Business Zip Code", "business_zipcode", "business_zipcode","", "Business Zip Code")
+                .optins.hearmore
+                    h4 Would you like to be contacted to hear more about Smithfield products?
+                    +radiobutton("Other", "products_opt_in","products_opt_in","1","")
+                        span.dot
+                        span Yes
+                    +radiobutton("Other", "products_opt_in","products_opt_in","0","")
+                        span.dot
+                        span No
+                .optins.mailinglist
+                    h4 Smokin' with Smithfield Mailing List – Sign up for more news, offers and more.
+                    +radiobutton("Other", "mailing_list_opt_in","mailing_list_opt_in","1","checked")
+                        span.dot
+                        span Yes
+                    +radiobutton("Other", "mailing_list_opt_in","mailing_list_opt_in","0","")
+                        span.dot
+                        span No    
+                //- .optins.bbqcup
+                //-     h4 Would you like to Opt-In for the Smokin’ With Smithfield National Barbecue Cup?
+                //-     +radiobutton("Other", "bbqcup_opt_in","bbqcup_opt_in","yes","checked")
+                //-         span.dot
+                //-         span Yes
+                //-     +radiobutton("Other", "bbqcup_opt_in","bbqcup_opt_in","no","")
+                //-         span.dot
+                //-         span No    
+                .rules
+                    +checkbox("","readtandc","readtandc","read_terms", "checked")
+                        span By registering, I certify that I am at least 18 years of age or older and have read and agree to the <a href="#tandc" class="modaltrigger">Registration Terms and Conditions</a>. 
+            .paypalPreAuth.clearafter
+                .col.paypalbutton
+                   input(type="submit", value="Submit")#SubmitForm.button.primary
+                .col.instructions
+                    p As part of the submission process we will be collecting your fee via PayPal.
+                    p Please have pop ups enabled to continue with the application.
+                    p Do not close your browser window until you see a Smithfield confirmation message.
+            //.paypalAuth
+                input(type="submit",name="cooks2018", value="Submit Application")
+        

@@ -1,0 +1,83 @@
+extends layout.pug
+
+block bodyContent
+    .homepage
+        //- h1.applications-open 2020 REGISTRATION IS NOW OPEN
+        section.ctas.committed-and-grants
+            div.colholder.cols-1.clearafter.ctaholder(style={'justify-content': 'center'})
+                +col("left committedcooks")
+                    a(href="/committed-cooks")
+                        .ctaImg
+                            h3 <strong>Committed Cooks Program</strong>
+                        .ctacontent
+                            //- p Earn perks and prizes when you commit to cooking with Smithfield.  Sign up now to be considered for the 2020 program.
+            
+                +col("right grantprogram")
+                    a(href="/grant-program")
+                        .ctaImg
+                            h3 <strong>GRANT PROGRAM</strong>
+                        .ctacontent
+                            //- p The 2020 Grant Applications are now closed.  Winners will be notified by 1/15/2020
+        //- section.standing
+        //-     include ./partials/leaderboard
+            //- include ./partials/homepagestandings
+            //- if !user
+            //-     .buttonholder.registerbutton
+            //-         a(href="/user/register").button.secondary Register Now 
+        //- include partials/sponsors.pug
+        //- section.thisweek
+            if !user
+                +columns("2", "notloggedin")
+                    +col("left logo")
+                        img(src="/images/logos/bbqchamp_2018_alt.png", alt="Smokin With Smithfield National Barbeque Championship")
+                    +col("right about")
+                        h1 About the Championship
+                        p The Smokin' With Smithfield National Barbecue Championship competition will show you where you rank against other leading competition barbecue teams across the country. The Championship has two parts: a year-long points chase and a playoff between the top 24 teams from across the country to name one unified National Barbecue Champion and the chance to win up to $50,000 cash.
+            .videoholder
+                <iframe src="https://player.vimeo.com/video/314348546" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+                            
+
+        //- section.ctas.committedonly
+            div.colholder.cols-1.clearafter.ctaholder(style={'justify-content': 'center'})
+                +col("left committedcooks")
+                    a(href="/committed-cooks")
+                        .ctaImg
+                            h3 <strong>Committed Cooks Program</strong>
+                        .ctacontent
+                            p Earn perks and prizes when you commit to cooking with Smithfield.  Sign up now to be considered for the 2019 program.
+                            span.button.primary Click Here
+                +col("right grantprogram")
+                    a(href="/grant-program")
+                        .ctaImg
+                            h3 <strong>GRANT PROGRAM</strong>
+                        .ctacontent
+                            p Check out the Smithfield Grant Program winners.
+                            span.button.primary Click Here
+                +col("right judgeprogram")
+                    a(href="/judging-application")
+                        .ctaImg
+                            h3 <strong>Judge PROGRAM</strong>
+                        .ctacontent
+                            p Want a taste of the competition? Apply for your chance to be a judge at the Smokin' With Smithfield National Barbecue Championship!
+                            span.button.primary Click Here
+        section.map
+            .headline
+                h2 <span class="logo"></span> 2020 Sponsored Competitions
+            .pins
+                each event in events
+                    .pin(rel=event.event_id, id=event.event_id, style=`left:${event.event_posLeft}%;top:${event.event_posTop}%;`, class=event.event_type.toLowerCase().replace(" ","_"))
+                        .dot
+                        .info
+                            -var eDate = new Date(event.event_date)
+                            .text !{event.event_label}
+                            .date !{eDate.toLocaleString('en-us', {weekday: "long",year:"numeric", month:"long",day:"numeric"})}
+                            if event.event_details
+                                .details !{event.event_details}
+                            .location !{event.event_city}, !{event.event_state}
+
+        section.standing
+            //- .headline
+            //-     h2 2020 Events List
+
+            include ./partials/events-table

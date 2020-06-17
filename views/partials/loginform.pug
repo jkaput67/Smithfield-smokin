@@ -1,0 +1,12 @@
+-var formClass = cssClass || ""
+if ajax == true
+    - formClass = cssClass + ""
+.login
+    form(action="/user/local/login", method="post", class="validate "+formClass)
+        input(type="hidden", name="__nexturl", value=nextUrl)
+        +textbox("Email Address", "email", "email fullwidth req","", "Email Address")
+        +password("Password", "password", "password fullwidth req","", "Password")
+        .remember
+            +checkbox("Remember Me", "remember_me", "fullwidth", "true", "checked")
+        .controls
+            input.button.primary(type="submit", value="Sign In")

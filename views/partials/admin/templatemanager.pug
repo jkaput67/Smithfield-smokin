@@ -1,0 +1,33 @@
+.allcontent.header
+    h2 Template Manager
+    .controls
+        a.button.addtemplate(href="/admin/template-manager/new") Add New Template
+.allcontent.types
+    p Deleting templates will remove them from the database, and then reset all items using that template name to use "subpage" as their template.
+    p Templates will need to be added to the views directory, with the same name as the slug. Editing templates in the CMS is not possible at this time.
+    p <strong>Ex:</strong> adding a template called "landing page", with the slug "landingpage" will look for and use a template called <em>/views/landingpage.pug</em>.
+    table#templates
+        tr
+            th.id ID
+            th.thelabel Label
+            th.slug Slug
+            th.edit Edit
+        each item in data
+            tr
+                td.id 
+                    span #{item.template_id}
+                td.thelabel 
+                    span #{item.label}
+                td.slug 
+                    span #{item.slug}
+                if item.template_id == 1
+                    td Default
+                else
+                    td.editcontrols 
+                        .edit.active
+                            a.edititem(href="#edit") Edit
+                            a.deleteitem(href="#delete") Delete
+                        .editing
+                            a.save(href="#save") Save
+                            a.cancel(href="#cancel") Cancel
+

@@ -1,0 +1,136 @@
+mixin textbox(title, id, cssclass, value, placeholder, readonly, type, required, name)
+    - var type = type || 'text';
+    - var required = required || false;
+    - var name = name || id;
+    label(class="textbox "+cssclass)
+        if block
+            block
+        else
+            span.labeltext !{title}
+        .textboxholder
+            if readonly
+                input(type=type, name=name, id=id, value=value, placeholder=placeholder,readonly, required=required)
+            else
+                input(type=type, name=name, id=id, value=value, placeholder=placeholder, required=required)
+
+mixin password(title, id, cssclass, value, placeholder)
+    label(class="textbox password "+cssclass)
+        if block
+            block
+        else
+            span.labeltext !{title}
+        .textboxholder
+            input(type="password", name=id, id=id, value=value, placeholder=placeholder)
+
+mixin numberbox(title, id, cssclass, value, min, max)
+    label(class="numberbox "+cssclass)
+        if block
+            block
+        else
+            span !{title}
+        .numberboxholder
+            input(type="number", name=id, id=id, value=value, min=min, max=max)
+
+mixin checkbox(title, id, cssclass, value, checked, required)
+    - var required = required || false;
+    label(class="checkbox "+cssclass)
+        .checkholder
+            if checked
+                input(type="checkbox", name=id, id=id, checked=checked, value=value, required=required)
+            else
+                input(type="checkbox", name=id, id=id, value=value, required=required)
+            i
+        if block
+            block
+        else
+            span !{title}
+
+mixin hidden(title, id, value, name)
+    - var name = name || id
+    input(type="hidden", name=name, id=id, value=value)
+
+mixin textarea(title, id, cssclass, value, placeholder, maxLength, required)
+    - var required = required || false
+    label(class="textarea "+cssclass)
+        span=title
+        if maxLength
+            textarea(name=id, id=id, placeholder=placeholder, required=required, maxLength=maxLength)
+                =value
+        else 
+            textarea(name=id, id=id, placeholder=placeholder, required=required)
+                =value
+
+mixin select(title, id, cssclass)
+    label(class="selectholder "+cssclass)
+        span=title
+        select(name=id, id=id)
+            block
+            
+mixin stateSelect(title, id, cssclass, value, name, required, useAbbreviations, justTheSelect)
+    - var name = name || 'state';
+    - var required = required || false;
+    - var useAbbreviations = useAbbreviations || false;
+    - var states = useAbbreviations ? [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ] : ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+    - var justTheSelect = justTheSelect || false;
+    if justTheSelect
+        select(name=name, id="state", required=required)
+            option(value="") * Select State
+            each state in states
+                if value == state
+                    option(value=state, selected="selected")=state
+                else
+                    option(value=state)=state
+    else
+        label(class="selectholder states " + cssclass)
+        span=title
+        select(name=name, id="state", required=required)
+            option(value="") * Select State
+            each state in states
+                if value == state
+                    option(value=state, selected="selected")=state
+                else
+                    option(value=state)=state
+        
+                
+mixin option(value, selected, label)
+    if selected
+        option(value=value, selected)=label
+    else
+        option(value=value)=label
+
+mixin radiobutton(title, id, cssclass, value, checked, required)
+    - var required = required || false;
+    label(class="radioholder "+cssclass)
+        if checked
+            input(type="radio", name=id, value=value, checked="checked", required=required)
+        else
+            input(type="radio", name=id, value=value, required=required)
+        if block
+            block
+        else
+            span !{title}
+
+mixin imguploader(title, id, cssclass, value)
+    div(class="imageuploader "+cssclass)
+        .controls
+            label.uploadButton 
+                span=title
+                input(type="file", name=id, id=id, accept="image/*").img
+            .uploadFileText
+            a(href="#cancel", class="cancelimage") Cancel
+        .imgpreview
+            img.preview
+
+
+
+mixin standard_demographics(id, cssclass)
+    -var c = " " + cssclass || ""
+    div(class="demographics" + c)
+        +textbox("* Head Cook First Name", "first_name", "firstname req","", "* Head Cook First Name")
+        +textbox("* Head Cook Last Name", "last_name", "lastname req","", "* Head Cook Last Name")
+        +textbox("* Contact Address", "contact_address", "address req","", "* Contact Address")
+        +textbox("* City", "contact_city", "city req","", "* City")
+        +textbox("* State", "contact_state", "state req","", "* State")
+        +textbox("* Zip Code", "contact_zipcode", "state req","", "* Zip Code")
+        +textbox("* Contact Phone Number", "phone", "phone req","", "* Contact Phone Number")
+        +textbox("* Contact Email Address", "email", "email req","", "* Contact Email Address")

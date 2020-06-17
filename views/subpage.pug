@@ -1,0 +1,293 @@
+extends layout.pug
+
+mixin prizeselect(name, text, availability)
+  -availability = availability || true
+  label.prizeselect.req
+    if(availability === true)
+      input(type="radio", id=name, name=name, value=text)
+    else
+      input(type="radio", id=name, name=name, value=text, disabled)
+    div Select
+
+
+block bodyContent
+    -var nextUrl = "/"
+    section.subpage.clearafter(class=intent)
+        case intent
+            when "content_single"
+                div(class="single_post postID_"+ content.content_id + " " + content.slug)
+                    if content.post_featured_image
+                        .banner.imgholder
+                            img(src=content.post_featured_image, alt=content.title)
+                    h2 #{title}
+                    .contentmanager !{content.content}
+            when "content_multiple_bytype"
+                div(class="posts "+ parent.slug)
+                    if parent.banner
+                        .banner
+                            img(src=parent.banner, alt="")
+                    if parent.title
+                        h1 !{parent.title}
+                    if parent.intro
+                        .intro !{parent.intro}
+                    .grid
+                        each post in content
+                            a(href=`/${post.post_type}/${post.post_slug}`, class=content[0].post_type + " item")
+                                if post.post_featured_thumbnail
+                                    .imgholder
+                                        img(src=post.post_featured_thumbnail, alt="")
+                                h3= post.title
+                                p= post.post_excerpt
+                                span Read More
+            when "where-to-buy"
+                include ./partials/where-to-buy
+            when "committed-cooks"
+                h1.committed-cooks-headline 2020 Committed Cooks Program  
+                .content.committed
+                    //- +col("left registration")
+                    //-     h3 2020 Registration
+                    //-     .imgholder
+                    //-         img(src="/images/trophy.png", alt="")
+                    //-     a.button.primary.openform(href="#apply") Apply for 2020
+                    +col("right share")
+                        h3 Did you take first place?
+                        p As a Committed Cook, you can participate in Winning with Smithfield Incentive Program. Want to brag about those 1st place wins in Ribs or Pork? Now’s your chance to show off! Click below to submit and share your wins and we will send you a prize!
+                        a.button.primary.openform(href="#share") Share my win
+                include ./partials/applyform.live.pug
+                include ./partials/sharemywinform.pug
+                .content.recentwinners.redbg
+                    .headline
+                        h2 Congratulations!
+                    h3.subhead To Our Recent Winners!
+                    p Check out our gallery of pitmasters who conquered their BBQ Competition,<br/>bringing home first place using Smithfield Fresh Pork!
+                    .winnersholder
+                        if winners
+                            each winner in winners
+                                .card
+                                    .cardcontent
+                                        if winner.img_url
+                                            .imgholder(style=`background-image:url(${winner.img_url})`)
+                                        h3=winner.team_name
+                                        .details
+                                            span=winner.event_name
+                                            span=winner.event_date
+                                            span=winner.first_place_in
+            when "committed-cooks-thanks"
+                h1.committed-cooks-headline 2020 Committed Cooks Program
+                .content.committedcooksthanks
+                    .headline
+                        h2 Thanks
+                    p Thanks for joining the Smokin' With Smithfield Committed Cooks program! 
+                    p Your Smokin' swag kit will be delivered within approx. 8 weeks of your completed application. Once received, proudly display your Smithfield swag and share photos of your delicious Smithfield ribs and pork on Facebook and Instagram using the hashtag Show Us Your Smithfield (#showusyoursmithfield). 
+                    p It is now safe to close your browser window.
+                    a(href="/").button.primary Return Home
+            when "share-success"
+                .content.sharesuccess
+                    img(src="/images/thankyou-header.png", alt="")
+                    h3 Thank you for applying for the Smokin’ With Smithfield Grant Program. Your application has been submitted for review. If selected, a Smithfield Grant Coordinator will get in contact with the Event Organizer listed on the application. 2019 Grants will be announced on or about January 8, 2019. 
+                    p To find out which Events received a 2018 Smokin' With Smithfield Grant, please go to our website <a href="http://www.smokinwithsmithfield.com">www.smokinwithsmithfield.com</a>.
+                    a.button.primary(href="/") Return Home
+            when "submit-win"
+                .content.submitwin
+                    .headline
+                        h2 Thank you for submitting your win!  
+                    h3 Your submission will be reviewed for approval and prizes will be sent in 4-6 weeks.
+                    a.button.primary.centered(href="/") Return Home
+            when "grant-success"
+                h1.committed-cooks-headline 2020 Committed Cooks Program
+                .content.committedcooksthanks
+                    .headline
+                        h2 Thanks
+                    p Thanks for joining the Smokin' With Smithfield Committed Cooks program! 
+                    p Your application has been submitted for review. If selected, a Smithfield Grant Coordinator will get in contact with the Event Organizer listed on the application. 2020 Grants will be announced on or about January 15, 2020.
+                    a(href="/").button.primary Return Home
+            when "team"
+                .content.team
+                    include partials/team.pug
+            when "privacy"
+                .content.privacy
+                    include partials/privacy.pug
+            when "noteam"
+                .content.noteam
+                    .headline
+                        h2 Not Found
+                    p Sorry, we can't find this team. Please check your spelling, or <a href="/user/register">register</a> now.
+            when "judge"
+                .content.judge.applyform
+                    include partials/judge
+            when "judge-success"
+                .content.judge.success
+                    include partials/judge-success
+            when "race"
+                .content.race.current
+                    .standings
+                        .headline
+                            h2 2019 Final Results
+                        .table
+                            .th_row
+                                .th Place
+                                .th Team Name
+                                .th Head Cook
+                            each team in standings
+                                .tr
+                                    .td !{team.place}
+                                    .td !{team.team_name}
+                                    .td !{team.head_cook}
+                        //- .buttonholder
+                        //-     a(href="/standings").button.primary See Full Standings
+                    //- .headline
+                    //-     h2 Current Standings
+                    //- .table
+                    //-     .th_row
+                    //-         .th Standings
+                    //-         .th Team Name
+                    //-         .th Overall Points
+                    //-     each team in standings
+                    //-         -var tname = team.team_name.replace(/\s/g, '_').replace(/\'/g, '').toLowerCase();
+                    //-         a(href="/team/"+team.bbqdata_team_id+"/"+tname).tr
+                    //-             .td !{team.place}
+                    //-             .td !{team.team_name}
+                    //-             .td !{team.points}
+                    //- .controls
+                    //-     a.button.primary(href="/standings") See Full Standings
+                //- .content.race.recent
+                    .headline
+                        h2 Recent Event Winners
+                    .table
+                        .th_row
+                            .th Team Name
+                            .th Event Name
+                            -//.th Date
+                            .th Sanctioning Body
+                        each team in events
+                            -var tname = team.team_name.replace(/\s/g, '_').replace(/\'/g, '').toLowerCase();
+                            a(href="/team/"+team.bbqdata_team_id+"/"+tname).tr
+                                .td !{team.team_name}
+                                .td= team.last_points_contest_name || "Event Name Not Found"
+                                -//.td= team.last_points_contest_end_date || "Event Name Not Found"
+                                .td= team.last_points_contest_org || "No Points Found"
+
+                    //- .controls
+                    //-     a.button.primary(href="/events/") See More Events
+                //- .content.race.gain
+                //-     .headline
+                //-         h2 Point Gainers
+                //-     .table
+                //-         .th_row
+                //-             .th Team Name
+                //-             .th Point Change
+                //-             .th Total Points
+                //-         each point in point_gainers
+                //-             -var tname = point.team_name.replace(/\s/g, '_').replace(/\'/g, '').toLowerCase();
+                //-             a(href="/team/"+point.bbqdata_team_id+"/"+tname).tr
+                //-                 .td !{point.team_name}
+                //-                 .td + !{point.points_change}
+                //-                 .td !{point.points}
+                         
+                //-     .controls
+                //-         a.button.primary(href="/pointchanges/") See More Point Changes
+                include partials/sponsors.pug
+                div.content.race
+                    <iframe src="https://player.vimeo.com/video/345706629" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="width:100%;"></iframe>
+
+            when "standings"
+                .content.standings
+                    include partials/standings.pug
+                include partials/sponsors.pug
+            when "events"
+                .content.eventlistings
+                    .headline
+                        h2 Recent Event Winners
+                    .table
+                        .th_row
+                            .th Team Name
+                            .th Event Name
+                            .th Sanctioning Body
+                        each team in events
+                            -var tname = team.team_name.replace(/\s/g, '_').replace(/\'/g, '').toLowerCase();
+                            -//a(href="/team/"+team.bbqdata_team_id+"/"+tname).tr
+                            .tr
+                                .td !{team.team_name}
+                                .td !{team.last_points_contest_name}
+                                .td=team.last_points_contest_org || "N/A"
+                        
+                    a.button.primary(href="/national-barbecue-championship") Back
+            when "pointchanges"    
+                .content.pointchanges
+                    .headline
+                        h2 Point Gainers
+                    .table
+                        .th_row
+                            .th Team Name
+                            .th Point Change
+                            .th Total Points
+                        each team in pointchanges
+                            -var tname = team.team_name.replace(/\s/g, '_').replace(/\'/g, '').toLowerCase();
+                            -//a(href="/team/"+team.bbqdata_team_id+"/"+tname).tr
+                            .tr
+                                .td !{team.team_name}
+                                .td !{team.last_points_earned}
+                                .td !{team.points}
+                        
+                    a.button.primary(href="/standings") Back
+            when "faq"
+                .content.faqs
+                    include partials/faqs.pug
+            when "confirm_team"
+                .content.confirm_team.user
+                  .headline
+                      h2 Do you have what it takes to be crowned the Unified National Barbecue Champion?
+                  h3 ALL NEW FOR 2019! The Smokin’ With Smithfield National Barbecue Championship
+                  p Smithfield is thrilled to announce the launch of our new program, the Smokin’ With Smithfield National Barbecue Championship! This competition will show you where you rank against all competition barbecue teams across the country. The championship has two parts: a year-long points chase and a playoff between the top 24 teams from across the country to name one unified National Champion and the chance to win up to $50,000 cash.
+                  p In partnership with a neutral third party, <a href="https://BBQData.com" target="_blank">BBQData.com</a>, Smithfield has created a points system to rank competition barbecue teams, regardless of major sanctioning body. If you compete in any barbecue competitions sanctioned by Kansas City Barbeque Society, International Barbeque Cookers Association or Florida BBQ Association between the dates of September 1, 2018 and August 31, 2019, you are eligible to earn points in the points chase.
+                  p Beginning in January 2019, you can come back to SmokinWithSmithfield.com to view our leaderboard and find out where you rank among all teams across the country! See below for more details and register by completing the following registration form.
+                  include partials/confirm_teamform.pug
+            when "team_already_confirmed"
+                .content.team_already_confirmed.user
+                    //- .headline
+                    h2 You're team has already been confirmed
+                    p If this is an error please <a class="modaltrigger contact" href="#contact">Contact Us</a>.
+                    //- a.button.primary(href="/user/login") Login to your account
+            when "team_confirmed"
+                .content.confirmed_team.user
+                    h2 Thanks we have updated your information
+                    p We are working to confirm your team claim and we will let you know when you are approved.
+                    //- a.button.primary(href="/user/login") Login to your account
+            when "editsuccess"
+                .content.confirmed_team.user
+                    .headline
+                        h2 Thanks 
+                    h2 We have updated your information
+                    .controls
+                        a.button.primary(href=`/team/${team_id}`) My Team Page
+                        a.button.secondary(href="/standings") See the current standings
+            //- when "grants"
+            //-     .content.grants
+            //-         include partials/grant-form.pug
+            when "404"
+            default
+                .content.four04
+                    include partials/404.pug
+
+block modals
+    +modal("tandc")
+        include partials/tandc.pug
+    +modal("lightbox", "lightbox")
+        .imgholder
+            img(src="", alt="")
+    +modal("loading")
+        h1 Loading...
+    +modal("error")
+        h1 Error
+        p Please review the following:
+        p.error 
+    if user
+        +modal("reportaproblem", "ajax")
+            include partials/reportaproblem.pug
+block script
+    if intent == "committed-cooks"
+        script.
+            window.ppToken = '#{ppToken}';
+        script(src="https://js.braintreegateway.com/web/3.54.0/js/client.min.js")
+        script(src="https://js.braintreegateway.com/web/3.54.0/js/paypal.min.js")
+        script(src="/javascripts/paypal.js")

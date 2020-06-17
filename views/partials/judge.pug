@@ -1,0 +1,80 @@
+.headline
+    h2 <span class="logo"></span> 2019 Judging Application
+h3 Want a taste of the competition? Apply for your chance to be a judge at the Smokin' With Smithfield National Barbecue Championship!
+p Join us and let’s get smokin’! This year at Smithfield, we’re seeking a pool of judges who can travel to New Orleans to be a part of our first annual Smokin’ With Smithfield National Barbecue Championship! What’s the perk of being a judge? You’ll get to try competition-quality barbecue from the best of the best teams from all sanctioning bodies across the United States, plus receive a swag bag for your participation!
+p We’d love to have you join us for delicious fun. If you’re interested, please complete the application below before September 15, 2019! Remember: Judges should have at least some prior experience judging competition barbecue, while learning a new judging style created specifically for our competition.
+.dashborder
+.formholder
+    form(action="/judging-application", method="post", class="validate")
+        .availability
+            h3 Availability
+            h4 Are you physically able to both Judge and/or be a Table Captain? (Must be able to do all "jobs" within the Judging tent: Table Captain, Judge, Turn-In Table, Grazing Table, Backup)? 
+            +radiobutton("", "physically","","yes")
+                span.dot
+                span yes
+            +radiobutton("", "physically","","no")
+                span.dot
+                span no
+            h4 Are you able to judge and be present all 4 days (Judging school on Thursday, November 14, followed by 3 days of contests ending on Sunday, November 17)?
+            +radiobutton("", "present","","yes")
+                span.dot
+                span yes
+            +radiobutton("", "present","","no")
+                span.dot
+                span no
+            h4 If not selected to Judge, would you like to Volunteer?
+            +radiobutton("", "volunteer","","yes")
+                span.dot
+                span yes
+            +radiobutton("", "volunteer","","no")
+                span.dot
+                span no
+        .contact
+            h3 Contact Information
+            .demographic
+                +textbox("* First Name", "first_name", "firstname req","", "* First Name")
+                +textbox("* Last Name", "last_name", "lastname req","", "* Last Name")
+                +textbox("* Address", "contact_address", "address req","", "* Address")
+                +textbox("* City", "contact_city", "city req","", "* City")
+                +textbox("* State", "contact_state", "state req","", "* State")
+                +textbox("* Zip Code", "contact_zipcode", "zip req","", "* Zip Code")
+                +textbox("* Phone Number", "phone", "phone req","", "* Phone Number")
+                +textbox("Cell Number", "cellphone", "cell phone","", "Cell Number")
+                +textbox("* Email Address", "email", "email req","", "* Email Address")
+                +textbox("* Number of Barbecue Contests judged in your judging career", "judged", "judged req","", "* Number of Barbecue Contests judged in your judging career")
+                +textbox("* In what year did you start judging Barbecue Contests? ", "startedjudging", "started req","", "* In what year did you start judging Barbecue Contests?")
+        .experience
+            h4 Are you a Master Judge?
+            +radiobutton("", "master","","yes")
+                span.dot
+                span yes
+            +radiobutton("", "master","","no")
+                span.dot
+                span no 
+            h4 Have you ever been a Table Captain for a Barbecue Competition? 
+            +radiobutton("", "tablecaptain","","yes")
+                span.dot
+                span yes
+            +radiobutton("", "tablecaptain","","no")
+                span.dot
+                span no
+            h4 If yes, approximate number of times:
+            +textbox("* Table Captain", "captainnumber", "tablecaptain","", "* Number of times you were a captain")
+        .sanctioningBody
+            h4 Please click the box for Barbecue Sanctioning bodies of barbecue contests in which you’ve judged:
+            +checkbox("Kansas City Barbeque Society",'sanctioning_body','','Kansas City Barbeque Society')
+            +checkbox("International Barbeque Cookers Association",'sanctioning_body','','International Barbeque Cookers Association')
+            +checkbox("Florida BBQ Association",'sanctioning_body','','Florida BBQ Association')
+            +checkbox("Barbecue Competitors Alliance",'sanctioning_body','','Barbecue Competitors Alliance')
+            +checkbox("Pacific Northwest Barbecue Association",'sanctioning_body','','Pacific Northwest Barbecue Association')
+            +checkbox("St. Louis BBQ Society",'sanctioning_body','','St. Louis BBQ Society')
+            +checkbox("Memphis Barbecue Network",'sanctioning_body','','Memphis Barbecue Network')
+            +checkbox("Other", "sanctioning_body","othersanction","other","")
+            +textbox("Other Sanctioning Body", "sanctioning_body_othertext", "sanctioning_body-othertext fullwidth","", "Sanctioning Body Name")
+        .essaysection
+            h4 Tell us in just a few short sentences why you believe you’re qualified to judge the Smokin’ with Smithfield National Barbecue Championship. 
+            +textarea("", "essay1", "essay", "", "")
+            h4 What is important to you in judging Barbecue Competitions? Flavor, preparation, presentation, any or other? 
+            +textarea("", "essay2", "essay", "", "")
+        .submitholder.buttonholder
+            input.button.primary(type="submit", value="Submit")

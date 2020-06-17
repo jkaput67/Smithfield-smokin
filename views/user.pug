@@ -1,0 +1,105 @@
+extends layout.pug
+
+block bodyContent
+    -var nextUrl = "/"
+    section.subpage.clearafter
+        .content.user
+            case intent
+                when "success"
+                    .headline
+                        h2 Congrats!
+                    p You've successfully registered.
+                    p click here to go to the current contest
+                when "resetpassword"
+                    .headline
+                        h2 Reset Password 
+                    p Enter your new password
+                    if errMssg
+                        .error
+                            for errors in errMssg
+                                span !{errors}
+                    include partials/newpassword.pug
+                when "thanks"
+                    .headline
+                        h2 Thanks!
+                    p We have successfully registered you.
+                    a(href=nextUrl) Click here to go to the contest
+                when "forgotpassword"
+                    .headline
+                        h2 Forgot password?
+                    p Enter your email below, and we will send you a reset link.
+                    p If you registered during the preseason, you should have recieved an email with a link. If you did not recieve the email, please contact us to resend.
+                    include partials/passwordreset.pug
+                when "forgotpassword-sent"
+                    .headline
+                        h2 Thanks
+                    p Check your email for password reset instructions.
+                    .controls
+                        a.button.primary(href="/") Return to the home page
+                when "forgotpassword-nouser"
+                    .headline
+                        h2 Thanks
+                    p Check your email for password reset instructions.
+                    .controls
+                        a.button.primary(href="/") Return to the home page
+                when "forgotpassword-sso"
+                    .headline
+                        h2 Sorry
+                    p We have that email on file, but it looks like you signed in with Facebook, Twitter, or Google.
+                    .controls
+                        a.button.primary(href="/") Return to the home page
+                when "login"
+                    .headline
+                        h2 Login
+                    //- p Not a member yet? <a href="/user/">Register</a>.
+                    p If you registered during the preseason, we have migrated your info into the login system. <a href="/user/forgotpassword">Click here</a> to have a password reset notice sent to your account.
+                    if errMssg
+                        .error
+                            h3 Username or password did not match
+                    include partials/loginform.pug
+                    p Forgot your password? <a href="/user/forgotpassword">Click here</a> to reset.
+                when "sociallogin"
+                    .headline
+                        h2 Login
+                    p Almost there! Please check and confirm the info below to complete your registration.
+                    if errors
+                        .error
+                            h3 There was an issue with your registration
+                            ul 
+                                for error in errors
+                                    li !{error}
+                    include partials/sociallogin.pug
+                when "profile"
+                    h1 User Profile
+                    p nothing here yet
+                default
+                    .headline
+                        h2 Do you have what it takes to be crowned the Unified National Barbecue Champion?
+                    if errors
+                        .error
+                            h3 There was an issue with your registration
+                            P Please review the following and resubmit 
+                            ul
+                                for error in errors
+                                    li= error
+                    else
+                        h3 ALL NEW FOR 2019! The Smokin’ With Smithfield National Barbecue Championship
+                        p Smithfield is thrilled to announce the launch of our new program, the Smokin’ With Smithfield National Barbecue Championship! This competition will show you where you rank against all competition barbecue teams across the country. The championship has two parts: a year-long points chase and a playoff between the top 24 teams from across the country to name one unified National Champion and the chance to win up to $50,000 cash.
+                        p In partnership with a neutral third party, <a href="https://BBQData.com" target="_blank">BBQData.com</a>, Smithfield has created a points system to rank competition barbecue teams, regardless of major sanctioning body. If you compete in any barbecue competitions sanctioned by Kansas City Barbeque Society, International Barbeque Cookers Association or Florida BBQ Association between the dates of September 1, 2018 and August 31, 2019, you are eligible to earn points in the points chase.
+                        p Beginning in January 2019, you can come back to SmokinWithSmithfield.com to view our leaderboard and find out where you rank among all teams across the country! See below for more details and register by completing the following registration form.
+                        p Already a member? <a href="/user/login">Login</a>.
+                    
+                    - var cssClass = "registernow"
+                    include partials/registerform.pug
+                    .additional
+                        h4 Additional Details:
+                        p Registration is free and is not required to be included in the leaderboard. Registration is required to be eligible to compete in the Smokin’ With Smithfield National Barbecue Championship Playoffs should you rank within the top 24. You must register on SmokinWithSmithfield.com by no later than July 1, 2019 to be eligible for the playoffs and your shot at winning cash prizes up to $50,000.
+                        p At the end of the competition season, the top 24 teams who are registered will be invited to compete in the Smokin’ With Smithfield National Barbecue Championship playoffs in New Orleans, Louisiana in November 2019. Smithfield will contact each qualified team directly from positions 1 through 24 to confirm their commitment to compete in the Playoffs. Each team will be required to pay for their own accommodations and transportation to New Orleans for the single elimination playoffs. More details on the Playoffs will be provided soon!
+                        p Smithfield has worked with <a href="https://BBQData.com" target="_blank">BBQData.com</a> to develop a comprehensive scoring system that accounts for factors such as overall ranking and strength of field. Each team’s 12 highest scores from eligible sanctioned competitions will count toward a team’s overall ranking. A full explanation of the points system is provided in the <a href="#tandc" class="modaltrigger">Registration Terms and Conditions</a> and <a href="/faq">FAQs</a>.
+                        p The Head Cook will be considered the "captain" of the registered team and will be the primary point of contact throughout the competition season and Playoffs. You will be responsibility for communicating all team changes during the season to <a href="mailto:bbq@smithfield.com">bbq@smithfield.com</a>. The Head Cook may not be changed after registration without the express consent of Smithfield.
+
+
+
+block modals
+    +modal("tandc")
+        include partials/tandc.pug

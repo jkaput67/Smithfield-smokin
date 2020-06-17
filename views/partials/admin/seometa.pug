@@ -1,0 +1,35 @@
+.seo
+    h3 SEO
+    p If these are not entered, they will fall back to the information entered on the page. It is best to hand craft the seo.
+    label.textholder
+        span Title 
+        input.seotitle(type="text", name="meta[][title]", value=meta.title)
+        small This is the title that shows in the tab/window. If not entered, it will fall back to the page title, and then fall back to the general site settings
+    label.textholder
+        span SEO Title
+        input.seotitle(type="text", name="meta[][seotitle]", value=meta.seotitle)
+        small This is the title that shows when sharing the page on social media
+    label.textholder
+        span OG Description
+        input.seodesc(type="text", name="meta[][seodesc]", value=meta.seodesc)
+        small This is the text that shows when shared on social media.
+    label.textholder.imgpath
+        span OpenGraph Image
+        span.addImg
+        input.featured(type="text", name="meta[][ogimage]", value=meta.ogimage)
+        if data.post_featured_image
+            .imgholder
+                img(src=data.og_image, alt="")
+        small This is the image that is shared on social media
+    label.textareaholder
+        span Twitter Tweet <i class="info"></i>
+        textarea#tweetcontent(name="meta[][tweet]")= meta.tweet
+    p Send it:
+    label.textholder
+        span Sendit Email Subject
+        input.emailsubject(type="text", name="meta[][emailsubject]", value=meta.emailsubject)
+        small This is the subject line to the email
+    label.textareaholder
+        span Sendit Email Message <i class="info"></i>
+        textarea#emailcontent(name="meta[][emailmessage]")= meta.emailmessage
+        small This is the email message

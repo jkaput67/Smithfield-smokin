@@ -1,0 +1,11 @@
+mixin columns(cols, cssClass, id)
+    -var c = " " + cssClass || ""
+    -var i = id || ""
+    -var cols = "cols-"+cols || "cols-2"
+    .colholder(id=i, class=cols + " clearafter" + c)
+        block
+
+mixin col(cssClass)
+    -var c = cssClass || ""
+    .col(class=c)
+        block

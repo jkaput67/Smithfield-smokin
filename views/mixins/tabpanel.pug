@@ -1,0 +1,9 @@
+mixin tabpanel(id)
+    .tabpanel(id=id)
+        .tabholder
+            block
+
+mixin tab(theid, title)
+    .tab(id= theid, data-title= title )
+        .tabBody
+            block

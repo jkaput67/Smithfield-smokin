@@ -1,0 +1,19 @@
+.standings
+    .headline
+        h2 This Week in Competitive Barbecue
+    h3 Current Standings
+    .table
+        .th_row
+            .th Standings
+            .th Team Name
+            .th Overall Points
+        each team in standings
+            -var tname = team.team_name.replace(/\s/g, '_').replace(/\'/g, '').toLowerCase();
+            a(href="team/"+team.bbqdata_team_id+"/"+tname).tr
+                .td !{team.place}
+                .td !{team.team_name}
+                .td !{team.points}
+        .
+            <!-- Last Sync !{standings[0].last_sync} -->
+    .buttonholder
+        a(href="/national-barbecue-championship").button.primary View Standings

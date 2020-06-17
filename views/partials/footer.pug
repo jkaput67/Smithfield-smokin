@@ -1,0 +1,13 @@
+footer
+    nav
+        ul
+            each link in footernav
+                if link.link !=""
+                   
+                    li
+                     if link.label === "California Privacy"
+                        a(href=link.link target="_blank", class=link.cssclass) #{link.label}
+                     else 
+                        a(href=link.link, class=link.cssclass) #{link.label}
+                else
+                    li #{link.label}

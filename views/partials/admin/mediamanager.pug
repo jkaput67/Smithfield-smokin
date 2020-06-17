@@ -1,0 +1,17 @@
+.allcontent.header
+    h2 Media
+    .controls
+        .filters
+            span Filter by:
+ 
+        a.button(href="/admin/new-media") Add/Upload New
+.allcontent.contentcontainer.media
+    .col.left.mediaholder
+        h3 All Media
+
+    .col.right.mediacontrols
+        h3 Upload Media
+        form(action="/admin/upload", method="post")
+            input#media(type="file", name="media")
+            .uploadcontrols
+                input.button(type="submit", value="Upload")

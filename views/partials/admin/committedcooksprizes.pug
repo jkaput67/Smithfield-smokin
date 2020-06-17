@@ -1,0 +1,23 @@
+.committedcooksprizes
+    h1 Prizes
+    p On Hold is number of prizes requested, but not yet approved. Claimed is number of prizes approved.
+    p Total number of prizes available can be changed below.
+    form#update_prizes.updateprizes(name='update_prizes', method='post', action='/admin/committedcooks-prizes')
+        table.datatable
+            tbody
+                tr
+                    th Prize Name
+                    th Total Number Available
+                    th Claimed
+                    th On Hold
+                each prize in prizes
+                    tr 
+                        td !{prize.prize_name}
+                        td 
+                            input(type="text", id=prize.id_prizes, name=`${prize.id_prizes}`, value=prize.prize_available)
+                        td !{prize.prize_claimed}
+                        td !{prize.prize_hold}
+        .controls.clearafter
+            a.button.ghost(href="/admin") Return to Dashboard
+            input(type="submit", value="Update").button.right
+            

@@ -1,0 +1,48 @@
+.dashboard
+    h1 Admin Dashboard
+    if user.role == "admin"
+        .admin
+            h2 Common Admin
+            .cardholder
+                -//a.card(href="/admin/")
+                -//    h3 Google Services
+                -//    p Tracking
+                a.card(href="/admin/all-pages")
+                    h3 Managed Content
+                    p Create, edit, and manage content
+                a.card(href="/admin/all-users")
+                    h3 Manage Users
+                    p View, edit, and add users
+                -//a.card(href="/admin/options")
+                -//    h3 Options
+                -//    p View and edit site options and settings
+        hr
+    if user.role == "admin" || "accounts"
+        .prize 
+            h2 Prize Admin
+            .cardholder
+                a.card(href="/admin/committedcooks")
+                    h3 Committed Cooks approval panel
+                a.card(href="/admin/committedcooks-prizes")
+                    h3 Committed Cooks Prizes
+        .reports
+            h2 Reports
+            p All reports will generate an XLSX/Excel document and download.
+            .cardholder
+                -//merged into users
+                -//a.card(href="/admin/exports/bbqchamp", target="_blank")
+                -//    h3 National BBQ Champs
+                a.card(href="/admin/exports/users") 
+                    h3 Export Users
+                    p All registered users for the site. Merged from BBQ Champ signups.
+                -//merged into users
+                a.card(href="/admin/exports/registrations", target="_blank")
+                    h3 Registrations
+                a.card(href="/admin/exports/committed-cooks", target="_blank")
+                    h3 Committed Cooks
+                    p Cooks do not have to register for the site
+                a.card(href="/admin/exports/judging-applications", target="_blank")
+                    h3 Judging Applications
+                a.card(href="/admin/exports/grants", target="_blank")
+                    h3 Grant Applications
+                    -//Grants do not run all year, so there may not be any fresh reports at certain times.

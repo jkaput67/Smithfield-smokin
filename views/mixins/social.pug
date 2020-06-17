@@ -1,0 +1,35 @@
+mixin sociallist(id, cssclass, ...items)
+    ul(id=id, class="socialicons "+cssclass)
+        each item in items
+            li
+                a.social_icons(href=item)
+                    span=item
+
+mixin shareThis(id, cssclass, ...items)
+    div(id=id, class="socialshare "+cssclass)
+        a.socialtrigger(href="#socialshare")
+        if block
+            .socialshareicons.custom
+                block
+        else
+            .socialshareicons.default
+                a(href="#shareit").fb
+                    span Share on facebook
+                a(href="#shareit").tw
+                    span Tweet this
+                a(href="#shareit").pinit
+                    span Pin it
+                a(href="#shareit").email
+                    span Email to a friend
+                
+mixin facebook(url, title, text, image)
+    a(href=url,data-title=title, data-content=text, data-image=image).fb
+        span Share on facebook
+
+mixin twitter(content, image)
+    a(href="#shareit", data-content=content, data-image=image).tw
+        span Share on twitter
+
+mixin email(content, image)
+    a(href="#shareit", data-content=content, data-image=image).email
+        span Share by email

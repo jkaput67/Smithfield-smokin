@@ -1,0 +1,23 @@
+form(action="/admin/setup", method="post", class=formClass)
+    input(type="hidden", name="__nexturl", value=nextUrl)
+    h2 Database Set up
+    label.textholder.req
+        span Database Endpoint
+        input.dbendpoint(type="text", name="dbendpoint")
+    label.textholder.req
+        span Database Name
+        input.dbname(type="text", name="dbname")
+    label.textholder.req
+        span Database User
+        input.dbuser(type="text", name="dbuser")
+    label.textholder.req
+        span Database Pass
+        input.dbpass(type="password", name="dbpass")
+    hr
+    h2 User Set up
+    label.textholder.req
+        span Master User
+        input.user(type="text", name="user")
+    label.textholder.req
+        span Email
+        input.email(type="text", name="email")

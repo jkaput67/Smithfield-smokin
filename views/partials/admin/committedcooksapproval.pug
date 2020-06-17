@@ -1,0 +1,46 @@
+.committedcooksapproval
+    h1 Committed Cooks
+    h2 Approval Panel
+    p Approve/Deny users here. Once approved, their prize requst will go from hold to claimed in the prize database.
+    p Form must be <strong>submitted</strong> before changes to status will take effect.
+    form#update_cooks.updatecooks(name='update_cooks', method='post', action='/admin/committedcooks')
+        .overflowtable
+            table.datatable
+                tr
+                    th Demographic Info
+                    th Event Info
+                    th Prize Request
+                    th Status
+                each val in cooks
+                    tr
+                        td
+                            strong Name: #{val.cook_name}
+                            div.small.
+                                Team: #{val.team_name}<br>
+                                Address: #{val.contact_address}<br>
+                                Phone: #{val.contact_phone}<br>
+                                Email: <a href="mailto:#{val.contact_email}">#{val.contact_email}</a>
+                            if val.img_url
+                                a(href=val.img_url).small.modaltrigger Uploaded Image
+                        td(valign="top", style="text-align:left;padding-left:1%").small.
+                            <strong>Event Name:</strong> #{val.event_name}<br>
+                            <strong>Event Date:</strong> #{val.event_date}<br>
+                            <strong>Placed In:</strong> #{val.first_place_in}<br>
+                            <strong>Submitted: </strong> #{val.submitted_at}
+                        td(valign="top") #{val.prize_selection}
+                        td.approval(valign="top")
+                            label.approved
+                                if val.approved == 1
+                                    input(type="radio", name=val.id, id=val.id, value="1,"+val.prize_selection, checked)
+                                else
+                                    input(type="radio", name=val.id, id=val.id, value="1,"+val.prize_selection)
+                                div yes
+                            label.disaproved
+                                if val.approved == 1
+                                    input(type="radio", name=val.id, id=val.id, value="0,"+val.prize_selection)
+                                else
+                                    input(type="radio", name=val.id, id=val.id, value="0,"+val.prize_selection, checked)
+                                div no
+        .controls.clearafter
+            a.button.ghost(href="/admin") Return to Dashboard
+            input(type="submit", value="Submit").button.right

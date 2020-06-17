@@ -1,0 +1,15 @@
+.adminstuff
+    h2 Upload Media
+    .mediaholder.clearafter
+        .col.left
+            h3 all images
+            .grid
+                
+        .col.right.uploader
+            h3 upload images
+            form#fileupload(action="/admin/ajax/upload-media", method="post", enctype="multipart/form-data")
+                #dropzone 
+                    span Drop your files here!
+                input#fileup(type='file', multiple='', name='mediafiles')
+                input#start.button(type='submit', value='Start upload')
+            #fileinfo

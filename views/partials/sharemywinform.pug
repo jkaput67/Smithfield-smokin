@@ -1,0 +1,57 @@
+.content.sharemywinform.hidden#share
+    a(href="#share").closeForm X
+    .intro
+        .headline
+            h2 Congratulations!
+        h3.subhead Tell Us About Your Win!
+        p Please fill out the form below in order to be featured on our page and to claim your prize!
+    .formholder
+        form.validate(id="congratsform", name="congratsform", method="post", enctype="multipart/form-data", action="/sharemywin")
+            h3 Application Contact Information:
+            .demographic    
+                +textbox("* Cook Name", "cook_name", "cook req","", "* Cook Name")
+                +textbox("* Team Name", "team_name", "team req","", "* Team Name")
+                +textbox("* Contact Address", "contact_address", "address req","", "* Contact Address")
+                +textbox("* Contact Phone Number", "contact_phone","phone req", "","* Contact Phone Number")
+                +textbox("* Contact Email Address", "contact_email","email req","", "* Contact Email Address")
+            h3 Event Information
+            .eventinfo
+                +textbox("* Event Name", "event_name","event req","", "* Event Name")
+                +textbox("* Event Date", "event_date","req datepicker", "","* Event Date")
+            .wininfo
+                h3 First Place in:
+                +radiobutton("Ribs", "first_place_in","","ribs")
+                    span.dot
+                    span Ribs
+                +radiobutton("Pork", "first_place_in","","pork")
+                    span.dot
+                    span Pork
+            .wininfo
+                h3 Did you score a 180?:
+                +radiobutton("a180", "a180","","yes")
+                    span.dot
+                    span Yes
+                +radiobutton("a180", "a180","","no")
+                    span.dot
+                    span No
+            +imguploader("Upload Image","photo_file","clearafter" )
+            .headline
+                h2 Select your prize!
+            .prizecontainer.clearafter(style="text-align:center")
+                - var dbitems = prizes
+                if dbitems
+                    each val in dbitems
+                        if val.prize_claimed + val.prize_hold >= val.prize_available
+                            .item.notavailable(style="display:inline-block;float:none")
+                                a(href=val.prize_img_url)
+                                    div(style="background-image:url("+val.prize_img_url+")")
+                                strong= val.prize_name
+                                +prizeselect('prize_selection', val.prize_name, "disabled" )
+                        else
+                            .item.available(style="display:inline-block;float:none")
+                                a.lightbox(href=val.prize_img_url, data-modal-name="lightbox")
+                                    div(style="background-image:url("+val.prize_img_url+")")
+                                strong= val.prize_name
+                                +prizeselect('prize_selection', val.prize_name )
+            .submitholder.buttonholder
+                input.button.primary(type="submit", value="Submit")

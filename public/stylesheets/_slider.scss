@@ -1,0 +1,28 @@
+.slider{overflow:hidden;height: 60vh;position: relative;background:#eee}
+.slider .preloader{position: absolute;transition: .5s all;top: 50%;left: 50%;width: 100px;background: url(/images/preloader.gif);height: 20px;border-radius: 1000px;box-shadow: 0 0 10px rgba(0,0,0,.35);transform: translate(-50%,-50%);}
+.slider .slidesholder{opacity: 0;transition: .5s opacity;}
+.slider.active .slidesholder{opacity: 1;}
+.slider.active .preloader{opacity: 0;}
+.slider .slide{position:relative;float: left;height: 60vh;}
+.slider .imgholder{position: absolute;top:0;left:0;right: 0;bottom:0;background-size: cover;background-position: 50% 50%}
+.slider .content{z-index: 10;position:absolute;top: 0%;left: 0;right:0;}
+.slider nav{position:absolute;bottom:10px;left:50%;transform:translate(-50%,0);background: rgba(255,255,255,.6);padding: 2px 12px;border-radius: 1000px;box-shadow: 0 0 5px rgba(0,0,0,.25)}
+.slider nav .next,
+.slider nav .prev{display:inline-block;vertical-align: middle;line-height: 100%;overflow: hidden;font-size: 0;}
+.slider a.next::before,
+.slider a.prev::before{font-size: 20px;line-height: 100%;font-family: "Font Awesome 5 Free"; font-weight: 900;}
+.slider .next::before{content:"\f105";}
+.slider .prev::before{content:"\f104";}
+.slider nav ul{display:inline-block;margin: 0 5px;vertical-align: middle;}
+.slider nav ul li{margin:0;padding:0;line-height: 100%;font-size: 0;vertical-align: middle}
+.slider nav ul li ~ li{margin-left: 5px}
+.slider nav ul li a{margin:0;padding:0;line-height: 100%;display: inline-block;font-size: 0;width: 10px;height: 10px;background: $color-pop;border-radius: 1000px;transition: .5s all}
+.slider nav li a:hover,
+.slider nav li a.currentSlide{background: $color-popAlt}
+.slider nav a:hover{color:$color-popAlt;}
+.slider .arrows{position: absolute;top:0;bottom:0;width: 6vw;background:rgba(255,255,255,.1);transition: .5s all;font-size: 0}
+.slider .arrows:hover{background:rgba(255,255,255,.35)}
+.slider .arrows.prev{left:0}
+.slider .arrows.next{right:0;}
+.slider a.arrows.next::before,
+.slider a.arrows.prev::before{font-size: 8vw;text-align:center;position: absolute;top:50%;left:0;right: 0;transform: translate(0%, -50%)}

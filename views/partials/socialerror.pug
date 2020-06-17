@@ -1,0 +1,31 @@
+-var formClass = cssClass
+if ajax == true
+    - formClass = cssClass + " ajax"
+
+form(action="/user/sociallogin", method="post", class=formClass)
+    input(type="hidden", name="__nexturl", value=nextUrl)
+    input(type="hidden", name="__network", value=values.__network)
+    input(type="hidden", name="__id", value=values.__id)
+    label.textholder.req
+        span Email Address
+        input.email(type="text", name="email", value=values.email)
+    label.textholder.req
+        span First Name
+        input.firstname(type="text", name="firstname", value=values.firstname)
+    label.textholder.req
+        span Last Name
+        input.lastname(type="text", name="lastname", value=values.lastname)
+    label.checkholder
+        if values.overAge
+            input(type="checkbox", name="overAge", checked)
+        else
+            input(type="checkbox", name="overAge")
+        span I am over 18
+    label.checkholder
+        if values.rules
+            input(type="checkbox", name="rules", checked)
+        else
+            input(type="checkbox", name="rules")
+        span I have read the rules
+    .controls
+        input.button(type="submit", value="Sign In")

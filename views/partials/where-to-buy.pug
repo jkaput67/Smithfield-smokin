@@ -1,0 +1,45 @@
+.content.wheretobuy
+    .headline
+        h2 Where to buy <span class="logo">Smithfield</span> fresh pork
+    p Looking for Smithfield<sup>&reg;</sup> Fresh Pork products at your local grocer? Check with your local grocer’s meat department and reference the Smithfield product codes to see if they currently carry our products or can order them for you.
+    +columns(3)
+        +col("left prime")
+            .imgholder
+                img(src="/images/products/prime.png", alt="Smithfield Prime All Natural")
+            p 
+                strong Bone-In Product Code:
+                span 70800212720 (Frozen)
+            p 
+                strong St. Louis Rib Product Code:
+                span 70800163780 (Frozen)
+        +col("center extra")
+            .imgholder
+                img(src="/images/products/extra-tender.png", alt="Smithfield Extra Tender Fresh Pork")
+            p
+                strong Bone-In Butt Product Code:
+                span 70800461890 (Frozen)
+            p
+                strong St. Louis Rib Product Code:
+                span 70800650867 (Frozen)
+            p
+                strong Walmart Rib Product Code:
+                span 70800704670 (Frozen)
+        +col("right fresh")
+            .imgholder
+                img(src="/images/products/all-natural.png", alt="Smithfield All Natural Fresh Pork")
+            p 
+                strong Bone-In Butt Product Code:
+                span 70800714880 (Fresh)
+                span 70800614260 (Fresh)
+                span 70800736150 (Fresh)
+            p   
+                strong St. Louis Rib Product Code:
+                span 70800704540 (Fresh)
+                span 70800704687 (Frozen)
+    p If you are having difficulties finding our product, visit <a href="https://www.kccompetitionmeats.com/" target="_blank">www.KCCompetitionMeats.com</a> to order online.<br/>Smithfield products will be shipped directly to you.
+.content.availableat.redbg
+    .headline
+        h2 A variety of <span class="logo ko">Smithfield</span> products are available at
+    .stores
+        each store in stores
+            span !{store.storename}

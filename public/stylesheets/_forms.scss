@@ -1,0 +1,10 @@
+form label{display:block;position: relative;}
+form label.textholder input{display: block;width:calc(100% - 2px);border:1px solid #ccc}
+form label span{display: block}
+.register,
+.login,
+.forgotpassword{max-width: 50%;min-width: 320px;margin:0 auto;padding: 2%;border:1px solid #ccc;border-radius: 5px}
+form .checkholder input{display: inline-block}
+form .checkholder span{display: inline-block}
+form label.textholder.error input{border:1px solid red}
+form label.checkholder.error{border:1px solid red}

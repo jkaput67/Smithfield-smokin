@@ -1,0 +1,119 @@
+.homepage .headline{padding:0 50px}
+.homepage .thisweek,
+.homepage .standing{border:9px solid $color-primary;position: relative;background:url(/images/2018_woodbackground.jpg) no-repeat 50% 50%;background-size: cover;padding:20px 0;margin:0 0 40px}
+
+.homepage .standings {background:$color-secondary;padding:20px 50px;margin:0 20px}
+.homepage .standings .headline{padding: 0}
+.homepage .standings h3{color:$color-primary;text-align: center;font-size: 26px}
+
+.homepage .events{border:9px solid $color-primary;position: relative;background:url(/images/2018_woodbackground.jpg) no-repeat 50% 50%;background-size: cover;padding:20px 0;margin:0 0 40px}
+
+.homepage .eventslist {margin:0 20px}
+.homepage .eventslist .headline{padding: 0}
+.homepage .eventslist h3{color:$color-primary;text-align: center;font-size: 26px}
+
+.homepage .ctas{margin-bottom:40px}
+.homepage .ctas a{display:block;color:$color-secondary;}
+.homepage .ctas a .ctaImg{border:9px solid $color-primary;position: relative;padding: 0 0 64%;margin:0 0 60px;background-size: cover;}
+.homepage .ctas a .ctaImg h3{position: absolute;padding:10px 0;bottom:0;left:0;right:0;background:rgba(255,255,255,.5);margin:0;padding:5px 0;text-align: center;color:$color-dark;font-family: $font-oswald;font-weight: 700;color: #231f20;font-size: 26px;line-height: 100%;text-transform: uppercase;transition: .5s all}
+.homepage .ctas a .ctaImg h3 strong{display: inline-block;vertical-align: middle;transition: .5s all}
+.homepage .ctas a .ctaImg h3 strong::after{content:"\f054";font-family: $font-awesome-free;display: inline-block;vertical-align:top;font-size: 16px;margin-left: 8px;color:$color-primary;transition: .5s all}
+.homepage .ctas a .ctaImg span{display: block;color: $color-primary;font-size: 18px;}
+.homepage .ctas a .ctaImg:after {top: 100%;left: 50%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none;border-color: rgba(134, 1, 6, 0);border-top-color: $color-primary;border-width: 40px;margin-left: -40px;}
+.homepage .ctas .grantprogram .ctaImg{background-image:url(/images/grant_cta_2018.jpg)}
+.homepage .ctas .committedcooks .ctaImg{background-image:url(/images/committedcooks_cta_2018.jpg)}
+.homepage .ctas .judgeprogram .ctaImg{background-image:url(/images/judging_cta.jpg)}
+.homepage .ctas a p {display: block;text-align: center;color:$color-secondary;font-family: $font-oswald;padding: 0 20px 0;font-size: 22px;font-weight: 900;}
+.homepage .ctas a:hover .ctaImg h3{background-color: rgba(255,255,255,.75);padding:14px 0}
+.homepage .ctas a:hover .ctaImg h3 strong::after{transform: translate(50%,0%)}
+.homepage .ctas .ctacontent{text-align: center}
+
+.homepage .committedonly .colholder{display: flex;justify-content: space-between;}
+.homepage .committedonly .col{width:calc(49% - 18px)}
+.homepage .committedonly .colholder::after{display: none}
+.homepage .committedonly a .ctaImg{margin-bottom: 0px}
+.homepage .committedonly .ctaImg:after{display: none}
+.homepage .committedonly .info{background:rgba(255,255,255,.6);border:9px solid $color-primary;text-align: center;display: flex;justify-content: center;}
+.homepage .committedonly .info > div{align-self: center;width: 80%;}
+.homepage .committedonly .info > div h3{text-transform: uppercase}
+
+.homepage .applications-open {
+    margin-bottom: 1em;
+    background: $color-primary;
+    padding: 1em 2em;
+    font-size: 3em;
+    text-align: center;
+    color: #fff;
+
+    @media(max-width: 500px) {     
+        font-size: 2em;
+    }
+}
+
+.homepage .committed-and-grants .colholder{display: flex; justify-content: space-between; @media(max-width: 768px) { display: block; }}
+.homepage .committed-and-grants .col {
+    flex: 1;
+    width: auto;
+    margin-right: 20px;
+    &:last-of-type { margin-right: 0; }
+    @media(max-width: 768px) {
+        margin-right: 0;
+        margin-bottom: 20px;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+.homepage .committed-and-grants a p { font-weight: 500; }
+.homepage .committed-and-grants a .ctaImg h3 strong::after { font-size: 25px; }
+.homepage .committed-and-grants a .ctaImg { margin-bottom: 40px; }
+
+.homepage .map{border:9px solid $color-primary;position: relative;background:url(/images/2020_map_update.jpg) no-repeat 50% 50%;background-size: cover;padding:0 0 60%;margin:0 0 40px}
+.homepage .map .headline{position: absolute;top: 0;left: 0;right: 0; white-space: nowrap;}
+.homepage .map .pins{position:absolute;top:0;left:0;right:0;bottom:0}
+.homepage .map .pin{position:absolute;}
+.homepage .map .pin .dot{cursor: pointer;}
+.homepage .map .pin .dot:after{content:"\f041";font-family: $font-awesome-free;font-weight: 900;font-size:14px;transition: .5s padding}
+.homepage .map .pin.grant .dot:after{color: #ed1c24;}
+.homepage .map .pin.major_sponsorship .dot:after{color: #8b5e3b;}
+
+.homepage .map .pin .info{position:absolute;background:#fff;overflow: hidden;width: 0;height: 0;transition: .5s all;bottom: 100%;transform: translate(-50%,0%)}
+.homepage .map .pin.left .info{transform: translate(-10%, 0%);}
+.homepage .map .pin.right .info{transform: translate(-90%, 0%);}
+.homepage .map .pin.active .info{z-index: 100;border:5px solid $color-primary;background:$color-secondary;color: $color-dark;padding:20px;;width: auto;height: auto;box-shadow: 0 10px 10px rgba(0,0,0,.35);}
+.homepage .map .pin.active .info .text{width:300px;font-weight: 700;font-size: 16px;}
+.homepage .map .pin:hover{z-index: 10000;}
+.homepage .map .pin:hover .dot:after,
+.homepage .map .pin.active .dot:after{font-size: 16px;text-shadow: 0 6px 5px rgba(100, 100, 100, 0.45);}
+
+.homepage .events{border:9px solid $color-primary;position: relative;background:url(/images/2018_woodbackground_long.jpg) no-repeat 50% 50%;background-size: cover;padding:20px 0;margin:0 0 40px}
+
+.homepage .notloggedin {margin: 0 50px }
+.homepage .notloggedin .left{width:24%}
+.homepage .notloggedin .right{width:72%}
+.homepage .notloggedin .left img{max-width: 100%;}
+
+.videoholder{position:relative;padding:0 0 50%;margin:2.5% 0}
+.videoholder iframe{position:absolute;top:0;left:0;right:0;bottom:0;width:100% !important;height:100% !important}
+
+.sponsors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 2em auto;
+}
+
+.sponsor-separator {
+    margin: 70px 0 25px;
+    height: 5.5px;
+    border: none;
+    background: $color-primary;
+}
+
+.standings-title {
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    font-size: 1.5em;
+}

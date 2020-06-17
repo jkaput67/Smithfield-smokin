@@ -1,0 +1,165 @@
+header{margin: 0}
+.adminheader{background:#eee;position: fixed;top:-60px;left: 0;z-index: 10001;box-shadow: 0 3px 5px rgba(0,0,0,.25);padding:0 20px;border-radius: 0 0 10px 0;transition:.5s all}
+.adminheader .showAdmin{position:absolute;top:100%;background:#eee;border-radius:0 0 5px 5px;box-shadow: 0 4px 5px rgba(0,0,0,.55);font-size: 0;}
+.adminheader .showAdmin:before{display:inline-block;padding:10px 20px;font-size:28px;content:'\f103';font-family: "Font Awesome 5 Free";font-weight: 700;}
+.adminheader .showAdmin:after{content:"";display:inline-block;background:url(/images/ims_icon.png) no-repeat 50% 50%;background-size:100%;width:40px;margin-right:10px;height:20px}
+.adminheader.active .showAdmin:before{content:'\f102';}
+.adminheader.active{top:0}
+.adminheader .container{display: flex;align-items: center;}
+.adminheader h1{color:#1e99cc;line-height: 100%;display: inline-block;vertical-align: middle;margin-right:10px;padding-left: 46px;background:url(/images/ims_icon.png) no-repeat 0% 50%;background-size:contain}
+.adminheader nav{display: inline-block;vertical-align: middle;flex:2;text-align: right}
+.adminheader nav ul li{text-align: left}
+.adminheader nav li,
+.adminheader nav li a{color:#aaa;font-weight: 700;font-size: 16px;text-transform: uppercase}
+.adminheader nav li a:hover{color:#666}
+.adminheader nav li:hover ul{background:#eee;border-radius: 0 0 3px 3px;box-shadow: 0 2px 2px rgba(0,0,0,.25)}
+.adminstuff{margin:20px auto;padding:10px;background: rgba(200,200,200, .50);}
+.adminstuff .container{padding:20px;/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#dddddd+0,cccccc+100 */
+    background: rgb(221,221,221); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(221,221,221,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(221,221,221,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(221,221,221,1) 0%,rgba(204,204,204,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dddddd', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */;box-shadow: 0 0 5px rgba(0,0,0,.75);border-radius: 5px}
+.adminstuff h2{font-weight: 700;font-size: 26px}
+.adminstuff h3{font-weight: 700;font-size: 18px}
+.adminstuff a{color:#3680b3;border-bottom:1px dotted}
+.adminstuff a:hover{border-bottom:1px solid}
+.adminstuff .button{display: inline-block;border:0;padding: 10px 18px;font-size:16px;border-radius: 10000px;background:#3680b3;color:#fff;transition: .5s background}
+.adminstuff .button ~ .button{margin-left:10px}
+.adminstuff .button:hover{box-shadow: 0 0 4px rgba(0,0,0,.35);background:#5297c7;border:0}
+.adminstuff .button.right{float:right}
+.adminstuff .contentcontainer{margin:10px 0;font:normal 14px/120% "Open Sans";}
+.adminstuff .contentcontainer .col.left{width:70%}
+.adminstuff .contentcontainer .col.right{width:29%}
+.adminstuff .uploadButton span{border:1px solid #ccc;}
+.adminstuff .textareaholder textarea{width: calc(100% - 22px);border:1px solid #ccc;height:100px;padding:10px;font:normal 14px/120% "Open Sans";}
+.adminstuff label{display:block;margin:0 0 10px;font-weight:400;text-transform:uppercase;font-size:12px;color:#777}
+.adminstuff input[type="text"]{width: calc(100% - 12px);font:normal 14px/120% "Open Sans";border:1px solid #ccc;padding:5px;border-radius:2px}
+.adminstuff label.post_type span{display:inline-block}
+.adminstuff .label{font-weight:700;text-transform:uppercase;font-size:12px;color:#777;/* margin-right:5px; */width: 28%;display: inline-block;text-align: right;vertical-align: middle;margin-right: 2%;}
+.adminstuff .data{font-weight:400;text-transform:uppercase;font-size:12px;display: inline-block;color:#777;vertical-align: middle;width: 70%;}
+.adminstuff .info{border-top:1px solid #aaa;margin:10px 0 0;padding:10px 0 0}
+.adminstuff .right h3{font-size:16px;font-weight:700;margin:0 0 10px;text-transform:uppercase;color:#aaa}
+.adminstuff .selectholder select{display:inline-block;width:100%;vertical-align: text-bottom;position:relative;opacity:1}
+.adminstuff .selectholder span{position:relative;opacity:1}
+.adminstuff .info div{margin: 0 0 10px;}
+.adminstuff .seo,
+.adminstuff .postimages{border-top:1px solid #aaa;margin:10px 0 0;padding:10px 0 0}
+.adminstuff .postimages img{max-width:100%;display:inline-block;line-height: 100%;}
+.adminstuff .postimages .preview{position:relative;display:none}
+.adminstuff .postimages .preview.active{display:block}
+.adminstuff .postimages .preview a{position:absolute;top:0;right:0;width:26px;height:26px;display:block;background:red;border-radius:1000px;}
+.adminstuff .postimages .preview a:before,
+.adminstuff .postimages .preview a:after{position:absolute;height:4px;background:#fff;border-radius:1000px;width:50%;content:"";display:block}
+.adminstuff .postimages .preview a:before{top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg)}
+.adminstuff .postimages .preview a:after{top:50%;left:50%;transform:translate(-50%,-50%) rotate(-45deg)}
+.adminstuff .postimages .preview a span{font-size:14px;display:block;position:absolute;top:50%;left:0;overflow:hidden}
+.adminstuff .postimages .preview a:hover span{width:60px}
+.adminstuff .postimages .preview .previewText{position:absolute;z-index:100;background:#ccc;padding:10px;text-transform:uppercase;font-weight:700;color:#fff;border-radius:0 0 3px 0}
+.adminstuff .postimages .preview .imgholder{
+    font-size:0;position:relative;border:5px solid #ccc;text-align:center;line-height: 0;padding:6px;
+    background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), 
+        linear-gradient(-45deg, #ccc 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #ccc 75%), 
+        linear-gradient(-45deg, transparent 75%, #ccc 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+.adminstuff .postimages .imgholder a{position:absolute}
+.adminstuff .editpost .pageslug input{display:none}
+
+.mce-tinymce{width:calc(100% - 2px) !important}
+.adminstuff .editor{border:1px solid #ccc;box-shadow:0 0 6px rgba(0,0,0,.24);padding: 10px 10px 0 10px;border-radius:2px}
+.allcontent{margin-bottom: 30px}
+.allcontent table{width: calc(100% - 2px);border:1px solid #ccc}
+.allcontent table th{font-weight: bold;border: 1px solid #ccc;text-align: center}
+.allcontent table td{border:1px solid #ccc;padding: 5px}
+.allcontent table .id{width:40px;text-align: center}
+.allcontent table .edit{width:80px;text-align: center}
+.allcontent table tr:nth-child(even){background:#efefef}
+.allcontent .controls{display: inline-block;text-align: right;flex:2}
+.allcontent.header{display: flex;align-items: center;padding:0 0 10px 0;margin:20px 0;border-bottom:1px solid #ccc}
+.allcontent.header .filters{display: inline-block;margin-right:10px;padding-right:10px;border-right:1px solid #ccc}
+.allcontent.header .filters select{display: inline-block;margin-left:5px}
+.adminstuff .imgpreview.active{background:#ccc;position:relative;text-align:center;padding:10px 0;border-radius:3px;margin:5px 0}
+.adminstuff .imgpreview img{display:inline-block}
+.adminstuff a.cancelimage{position:absolute;transition:.5s all;width:20px;height:20px;right:5px;top:5px;background:#fff;border-radius:100%;overflow:hidden;text-indent:-100px;border:0;}
+.adminstuff a.cancelimage:after,
+.adminstuff a.cancelimage:before{content:"";border-radius:1000px;display:block;height:4px;width:76%;background:red;position:absolute;top:50%;left:50%}
+.adminstuff a.cancelimage:after{transform:translate(-50%,-50%) rotate(45deg)}
+.adminstuff a.cancelimage:before{transform:translate(-50%,-50%) rotate(-45deg)}
+.adminstuff a.cancelimage:hover{box-shadow:0 0 6px rgba(0,0,0,.45)}
+.adminstuff .col.right .pagecontrols .controls{text-align:right}
+.adminstuff .col.right .pagecontrols .controls a{margin-right:10px;padding: 0 5px}
+.adminstuff .dashboard .cardholder{display:flex;flex-wrap:wrap;flex-wrap: wrap;justify-content: flex-start;margin:0  -10px}
+.adminstuff .dashboard hr{border-top:1px solid #999}
+
+.adminstuff .dashboard .card{display:inline-block;background: #eee;flex-direction: column;justify-content: space-between;border: 1px solid #ccc;padding: 10px;margin: 10px;width: calc(25% - 42px);border-radius:5px;transition: .5s background}
+.adminstuff .dashboard .card:hover{background:#fff;box-shadow:0 0 3px rgba(0,0,0,.25)}
+
+.radios{position:relative}
+.radios span{display:inline-block;vertical-align:middle;margin: 0 10px 0 0;width:60px}
+.radios input{position:absolute;top:0;left:0;opacity:.5}
+.radios .toggle{display:inline-block;width:40px;height:20px;border:1px solid #ccc;position:relative;border-radius:300px}
+.radios .toggle:before{content:"";display:block;width:20px;height:20px;border-radius:300px;background:red;position:absolute;left:0px;transition:.25s all}
+.radios input:checked ~ .toggle:before{background:green;left:20px}
+.modalcontent .adminstuff{margin-top:0}
+#mediauploader{width:90vw;background:#ddd}
+#mediauploader .modalcontent{width:100%;max-width: calc(100% - 40px);height: 90vh;overflow: auto}
+#mediauploader .right{width: 320px;padding:0 0 0 20px;margin:0 0 0 20px;border-left: 1px solid #ccc;position: relative;}
+#mediauploader .left{width:calc(100% - 361px);}
+#mediauploader .left .grid{background:#fff;overflow-y: auto;justify-content: space-between;max-height: 73vh;}
+#mediauploader #dropzone{border:4px dashed #ccc;padding:0 0 85%;text-align: center;margin:0 0 20px;color:#ccc;font-weight: 700;position:relative}
+#mediauploader #dropzone span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+#mediauploader #fileup{position: absolute;top:0;right:0;width: 0;opacity: 0;}
+.mediaholder .grid{display:flex;flex-wrap:wrap;}
+.mediaholder .grid .item{position:relative;overflow:hidden;padding: 0px 0 23% 0;width: calc(24% - 10px);border:5px solid #ccc;margin: 0 0 1% 0%;cursor: pointer;
+    background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), 
+        linear-gradient(-45deg, #ccc 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #ccc 75%), 
+        linear-gradient(-45deg, transparent 75%, #ccc 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+.mediaholder .grid .item:hover{border-color:#3680b3}
+
+.mediaholder .grid .item img{max-width:100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.mediaholder .grid .item .media_id{position:absolute;right: -1px;top: -1px;background:#ccc;padding:5px;z-index:1;border-radius:0px 0px 0 5px;font-weight:700;color:#fff;box-shadow: 6px 2px 5px rgba(0,0,0,.25);}
+.mediaholder .grid .item:hover .media_id{background:#3680b3}
+.adminstuff .imgpath{position:relative}
+.adminstuff .addImg{position:absolute;top:0%;height:20px;width:20px;right:0;cursor: pointer;}
+.adminstuff .addImg:before,
+.adminstuff .addImg:after{display:block;content:"";height:3px;width:80%;background:#3680b3}
+.adminstuff .addImg:after{transform:translate(-0%,-50%) rotate(90deg)}
+.adminstuff .addImg:before{transform:translate(-0%,50%)}
+.adminstuff td.slug,
+.adminstuff th.slug{width:200px}
+
+.adminstuff #templates .editcontrols .edit,
+.adminstuff #templates .editcontrols .editing{display: none}
+.adminstuff #templates .editcontrols .active{display: block}
+.adminstuff #templates .editcontrols a{display: inline-block}
+.adminstuff #templates .editcontrols a ~ a {margin-left:5px}
+.adminstuff #templates tr.editing span{display:none}
+
+ul.sortable li{display: block;border:1px solid #ccc;padding:5px;margin:0 0 5px;}
+ul.sortable li.sortable-dragging{background:#eee;box-shadow: 0 0 5px rgba(0,0,0,.35)}
+ul.sortable li .handle{display: inline-block;padding: 5px 10px;background: #ccc;border-radius: 2px;margin-right: 10px;cursor: grab;}
+
+.overflowtable{max-height: 500px;overflow-y: scroll;margin-bottom: 20px;border: 2px solid;padding: 5px;}
+table.datatable {width:100%;margin:0 auto 20px;font-size:16px}
+table.datatable th{border-bottom:1px solid #fff;font-weight:bold;text-align:center;background:#860106;color:#fff;padding:8px;border-left:1px solid #fff}
+table.datatable td{padding:12px 4px;border-bottom:1px solid #fff;border-left:1px solid #fff;}
+table.datatable th:last-child,
+table.datatable td:last-child{border-right:1px solid #fff}
+table.datatable tr{background:rgba(255,255,255,.25);transition: .5s background}
+table.datatable tr:hover{background:rgba(255,255,255,.65)}
+table.datatable tr td .ua{white-space: nowrap;display:inline-block;width: 100px;overflow: hidden;text-overflow:ellipsis;}
+input.button[type="submit"]{background-color:green}
+.committedcooksprizes td{text-align:center}
+.committedcooksprizes table.datatable td:first-child{text-align:right}
+.approval label {display: inline-block;position: relative;width: 50%;cursor: pointer;position: relative;line-height: 180%;padding: 5px 0; }
+.approval label input {position: absolute;opacity: 0; }
+.approval label div {text-align:center;transition: .5s all; }
+.approval label.approved input:checked ~ div {background: green;color: white; }
+.approval label.disaproved input:checked ~ div {background: red;color: white; }

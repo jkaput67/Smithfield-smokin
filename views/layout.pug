@@ -1,0 +1,104 @@
+include ./mixins/accordion.pug
+include ./mixins/recipe.pug
+include ./mixins/slider.pug
+include ./mixins/tabpanel.pug
+include ./mixins/structure.pug
+include ./mixins/modals.pug
+include ./mixins/formelements.pug
+include ./mixins/social.pug
+
+doctype html
+html.no-js
+  head
+    block head
+    title= meta.title || title ||  "BBQ Cup"
+    meta(name="viewport", content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    link(href="//fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet")
+    link(href="//use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    if user && user.role == "admin"
+      link(rel='stylesheet', href='/stylesheets/admin.css')
+    -var _ogTitle = meta.seotitle || meta.title || title || ogTitle || ""
+    meta(property="og:title", content=_ogTitle)
+    -var _description = meta.seodesc || description || desc || ""
+    -var _shareimg = meta.ogimage ||shareImg || og_img || `/images/SWS_NBC_SocialShare_2019.jpg`
+    meta(name="description", content=_description)
+    meta(property="og:description", content=_description)
+    meta(property="og:image", content=_shareimg)
+    meta(name='msapplication-TileColor', content='#ffffff')
+    meta(name='theme-color', content='#ffffff')
+    script(src="https://www.google.com/recaptcha/api.js")
+    script.
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WSRBHC5');
+
+    script.
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '199654313834233',
+          xfbml      : true,
+          version    : 'v2.8'
+        });
+      };
+
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+      window.twttr = (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+          if (d.getElementById(id)) return t;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js, fjs);
+
+          t._e = [];
+          t.ready = function(f) {
+            t._e.push(f);
+          };
+
+          return t;
+        }(document, "script", "twitter-wjs"));
+
+  body
+    if dev
+      .dev Hi developer. You are running on localhost. Various security processes are relaxed.
+    .container.clearafter
+      block header
+      include ./partials/header.pug
+      main
+        block bodyContent
+      include ./partials/footer.pug
+    block modals
+    #overlay
+    +modal("contact", "contact")
+      -var ajax = true
+      include ./partials/contactform.pug
+
+    script(src="//assets.pinterest.com/js/pinit.js", async, defer)
+    script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script.
+      window.jQuery || document.write('<script src="/javascripts/jquery.3.3.1.min"><\/script>')
+    script(src="/javascripts/pikaday.js")
+    script(src="/javascripts/pikaday.jquery.js")
+    script(src="/javascripts/hammer.js")
+    script(src="/javascripts/mask.js")
+    script(src="/javascripts/init.js")
+    if user && user.role == "admin"
+      script(src="/javascripts/admin.js")
+    .
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WSRBHC5"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+    block script

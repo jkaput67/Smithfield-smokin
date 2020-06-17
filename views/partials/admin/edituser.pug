@@ -1,0 +1,19 @@
+form(action="/admin/save-user/update-user", method="post", class=formClass)
+    input(type="hidden", name="nonce", value=nonce)
+    input(type="hidden", name="__nexturl", value="/admin/all-users")
+    input(type="hidden", name="user_id", value=data.user_id)
+    //- input(type="hidden", name="publish_date", value=data.publish_date)
+    .contentcontainer
+        .col.left.main
+            .editor
+                label.textholder.req
+                    span First Name
+                    input.pagetitle(type="text", name="firstname", value=data.firstname)
+                label.textholder.req
+                    span Last Name
+                    input.pagetitle(type="text", name="lastname", value=data.lastname)
+                label.textholder.req
+                    span Email
+                    input.pagetitle(type="text", name="email", value=data.email)
+        .col.right
+            include editorusersidebar.pug
