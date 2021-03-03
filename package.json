@@ -50,7 +50,7 @@
 		"passport-local": "^1.0.0",
 		"passport-remember-me": "0.0.1",
 		"passport-twitter": "^1.0.4",
-		"pug": "^2.0.3",
+		"pug": "^3.0.1",
 		"raw-body": "^2.3.3",
 		"request": "^2.88.0",
 		"sass": "^1.14.3",
