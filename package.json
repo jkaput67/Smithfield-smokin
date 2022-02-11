@@ -25,7 +25,7 @@
 		"express-flash": "0.0.2",
 		"express-session": "^1.15.6",
 		"formidable": "^1.2.1",
-		"froala-editor": "^2.9.0",
+		"froala-editor": "^4.0.7",
 		"gulp-cli": "^2.0.1",
 		"gulp-util": "^3.0.8",
 		"hashids": "^1.2.2",
