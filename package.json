@@ -34,7 +34,7 @@
 		"jsonwebtoken": "^8.3.0",
 		"knex": "^0.14.6",
 		"mailgun-js": "^0.18.1",
-		"moment": "^2.22.2",
+		"moment": "^2.29.4",
 		"moment-timezone": "^0.5.23",
 		"morgan": "^1.9.1",
 		"mysql": "^2.16.0",
